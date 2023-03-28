@@ -15,7 +15,7 @@ export const NewsContainer: React.FC = (): JSX.Element | null => {
 
   useEffect(() => {
     if (!newStory) navigate("/");
-  }, [newStory]);
+  }, [newStory, navigate]);
 
   if (!newStory) return null;
 
