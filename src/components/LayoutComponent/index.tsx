@@ -41,7 +41,7 @@ export const LayoutComponent: React.FC<LayoutComponentProps> = ({
                 sx={{
                     height: 'calc(100vh - 64px)',
                     overflowY: 'auto',
-                    paddingTop: '64px'
+                    mt: '64px'
                 }}
             >
                 {children}
