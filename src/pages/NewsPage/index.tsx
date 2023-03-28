@@ -1,11 +1,3 @@
-import Divider from '@mui/material/Divider';
-import { Box } from '@mui/system';
+import { NewsContainer } from '../../containers';
 
-export const NewsPage: React.FC = (): JSX.Element => {
-  return (
-    <Box>
-      News
-      <Divider />
-    </Box>
-  );
-};
+export const NewsPage: React.FC = (): JSX.Element => <NewsContainer />;

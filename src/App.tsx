@@ -10,7 +10,7 @@ export const App: React.FC = (): JSX.Element => {
       <LayoutComponent>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/news" element={<NewsPage />} />
+          <Route path="/news/:newsId" element={<NewsPage />} />
         </Routes>
       </LayoutComponent>
     </Router>

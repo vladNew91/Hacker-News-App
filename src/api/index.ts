@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { NewStory } from '../types';
 
 const firstElement = 0;
@@ -16,7 +16,7 @@ export async function getDataRequest() {
         top100NewsArray.map(
             (el: number) => axios.get(`${URL_ITEM}${el}.json?print=pretty`)
         )
-    ).catch(err => console.log(err)) as NewStory[];
+    ).catch((err: AxiosError) => console.log(err)) as NewStory[];
 
     return newsData;
 }
