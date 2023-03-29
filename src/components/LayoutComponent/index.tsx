@@ -1,11 +1,15 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router';
-import Box from '@mui/material/Box';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import { ThemeSwitcherContainer } from '../../containers';
 import AltRouteIcon from '@mui/icons-material/AltRoute';
-import { IconButton, Tooltip } from '@mui/material';
+import {
+    IconButton,
+    Tooltip,
+    Box,
+    AppBar,
+    Toolbar,
+    Typography,
+} from '@mui/material';
 
 export interface LayoutComponentProps {
     children: React.ReactNode;
@@ -26,13 +30,16 @@ export const LayoutComponent: React.FC<LayoutComponentProps> = ({
                 <AppBar position="fixed">
                     <Toolbar>
                         <Tooltip title="Hacker News">
-                            <IconButton color='inherit' onClick={handlePageBack} sx={{ mr: 2 }} >
+                            <IconButton onClick={handlePageBack}>
                                 <AltRouteIcon />
-                            </IconButton></Tooltip>
+                            </IconButton>
+                        </Tooltip>
 
                         <Typography variant="h6" component="div" mr={3}>
                             Hacker News
                         </Typography>
+
+                        <ThemeSwitcherContainer />
                     </Toolbar>
                 </AppBar>
             </Box>
@@ -41,7 +48,7 @@ export const LayoutComponent: React.FC<LayoutComponentProps> = ({
                 sx={{
                     height: 'calc(100vh - 64px)',
                     overflowY: 'auto',
-                    mt: '64px'
+                    mt: '64px',
                 }}
             >
                 {children}

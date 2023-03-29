@@ -30,7 +30,7 @@ export const NewsContainer: React.FC = (): JSX.Element | null => {
         {newStory.data.title}
       </Link>
 
-      <Typography variant="subtitle2" color="GrayText">
+      <Typography variant="subtitle2">
         {newStory.data.score} point from {newStory.data.by} {getTimeFromNow(newStory.data.time)}
       </Typography>
     </Box>
