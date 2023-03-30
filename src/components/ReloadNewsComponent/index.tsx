@@ -11,9 +11,8 @@ export const ReloadNewsComponent: React.FC<ReloadNewsComponentProps> = ({
     return (
         <Tooltip title="Reload news">
             <IconButton
-                size="large"
+                size="small"
                 color="primary"
-                sx={{ position: "fixed", bottom: "20px", left: "50%" }}
                 onClick={handleReloadNews}
             >
                 <CachedIcon />

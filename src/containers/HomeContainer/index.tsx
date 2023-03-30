@@ -8,7 +8,6 @@ import {
     ErrorAlertComponent,
     LoadingComponent,
     NewsListComponent,
-    ReloadNewsComponent
 } from '../../components';
 
 export const HomeContainer: React.FC = (): JSX.Element => {
@@ -38,8 +37,12 @@ export const HomeContainer: React.FC = (): JSX.Element => {
     return (
         <>
             <div ref={divElement}></div>
-            <NewsListComponent data={data} handleSelectNews={handleSelectNews} />
-            <ReloadNewsComponent handleReloadNews={handleReloadNews} />
+
+            <NewsListComponent
+                data={data}
+                handleSelectNews={handleSelectNews}
+                handleReloadNews={handleReloadNews}
+            />
 
             {requestError && <ErrorAlertComponent />}
             {loading && <LoadingComponent />}

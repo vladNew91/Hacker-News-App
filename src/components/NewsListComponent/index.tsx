@@ -1,3 +1,4 @@
+import { ListSubheaderComponent } from '../../components';
 import { getTimeFromNow } from '../../helpers';
 import { NewStory } from '../../types';
 import {
@@ -7,22 +8,23 @@ import {
     ListItemText,
     ListItem,
     List,
-    ListSubheader
 } from '@mui/material';
 
 interface NewsListComponentProps {
     data: NewStory[],
+    handleReloadNews: () => void;
     handleSelectNews: (el: NewStory) => void;
 }
 
 export const NewsListComponent: React.FC<NewsListComponentProps> = ({
     data,
+    handleReloadNews,
     handleSelectNews,
-}: NewsListComponentProps): JSX.Element => {    
+}: NewsListComponentProps): JSX.Element => {
     return (
         <List
             aria-labelledby="nested-list-subheader"
-            subheader={<ListSubheader>Last 100 news</ListSubheader>}
+            subheader={<ListSubheaderComponent handleReloadNews={handleReloadNews} />}
         >
             {data.map((el: NewStory, i: number) => (
                 <Box key={el.data.id}>
