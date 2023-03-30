@@ -18,7 +18,7 @@ interface NewsListComponentProps {
 export const NewsListComponent: React.FC<NewsListComponentProps> = ({
     data,
     handleSelectNews,
-}: NewsListComponentProps): JSX.Element => {
+}: NewsListComponentProps): JSX.Element => {    
     return (
         <List
             aria-labelledby="nested-list-subheader"
