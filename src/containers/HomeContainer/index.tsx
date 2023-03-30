@@ -11,7 +11,6 @@ import {
     ReloadNewsComponent
 } from '../../components';
 
-
 export const HomeContainer: React.FC = (): JSX.Element => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
