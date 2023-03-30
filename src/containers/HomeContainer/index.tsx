@@ -18,9 +18,6 @@ export const HomeContainer: React.FC = (): JSX.Element => {
 
     const { data, loading, requestError, makeRequest } = useRequestNews();
 
-    console.log(data);
-    
-
     useEffect(() => { makeRequest() }, [makeRequest]);
 
     const divElement = useRef<null | HTMLDivElement>(null);
