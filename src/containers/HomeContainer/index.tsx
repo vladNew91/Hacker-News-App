@@ -1,8 +1,10 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { selectedNews } from '../../modules/slices';
-import { useRequestNews } from '../../helpers';
+import { getDataRequest } from '../../api';
+import { useQuery } from 'react-query';
+import { goOnTop } from '../../helpers';
 import { NewStory } from '../../types';
 import {
     ErrorAlertComponent,
@@ -11,21 +13,17 @@ import {
 } from '../../components';
 
 export const HomeContainer: React.FC = (): JSX.Element => {
+    const { isLoading, error, data, refetch } = useQuery("requestNews", getDataRequest);
+
+    const ref = useRef<null | HTMLDivElement>(null);
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const { data, loading, requestError, makeRequest } = useRequestNews();
-
-    useEffect(() => { makeRequest() }, [makeRequest]);
-
-    const divElement = useRef<null | HTMLDivElement>(null);
-
-    const goOnTop = useCallback(() => divElement?.current?.scrollIntoView({ behavior: 'smooth' }), []);
-
     const handleReloadNews = useCallback(() => {
-        makeRequest();
-        goOnTop();
-    }, [makeRequest, goOnTop]);
+        goOnTop(ref);
+        refetch();
+    }, [refetch]);
 
     const handleSelectNews = useCallback((news: NewStory) => {
         dispatch(selectedNews(news));
@@ -36,7 +34,7 @@ export const HomeContainer: React.FC = (): JSX.Element => {
 
     return (
         <>
-            <div ref={divElement}></div>
+            <div ref={ref}></div>
 
             <NewsListComponent
                 data={data}
@@ -44,8 +42,8 @@ export const HomeContainer: React.FC = (): JSX.Element => {
                 handleReloadNews={handleReloadNews}
             />
 
-            {requestError && <ErrorAlertComponent />}
-            {loading && <LoadingComponent />}
+            {error && <ErrorAlertComponent />}
+            {isLoading && <LoadingComponent />}
         </>
     );
 };

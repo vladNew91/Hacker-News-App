@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { selectedNewsSlice } from "./slices";
 
+export * from "./query";
+
 export const store = configureStore({
   reducer: {
     selectedNews: selectedNewsSlice.reducer,
