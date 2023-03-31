@@ -1,9 +1,9 @@
 import { useCallback, useRef } from 'react';
+import { useQuery } from 'react-query';
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { selectedNews } from '../../modules/slices';
-import { getDataRequest } from '../../api';
-import { useQuery } from 'react-query';
+import { getNewsRequest } from '../../api';
 import { goOnTop } from '../../helpers';
 import { NewStory } from '../../types';
 import {
@@ -13,7 +13,10 @@ import {
 } from '../../components';
 
 export const HomeContainer: React.FC = (): JSX.Element => {
-    const { isLoading, error, data, refetch } = useQuery("requestNews", getDataRequest);
+    const { isLoading, error, data, refetch } = useQuery("requestNews", getNewsRequest, {
+        refetchOnMount: false,
+        refetchOnWindowFocus: false,
+    });
 
     const ref = useRef<null | HTMLDivElement>(null);
 

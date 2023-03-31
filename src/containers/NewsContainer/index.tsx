@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getTimeFromNow } from "../../helpers";
+import { selectNews } from "../../modules/selectors";
 import { Link, styled, Typography } from "@mui/material";
-import { selectSelectedNews } from "../../modules/selectors";
 
 const Box = styled('div')(({ theme }) => ({
   margin: theme.spacing(2),
@@ -11,7 +11,7 @@ const Box = styled('div')(({ theme }) => ({
 
 export const NewsContainer: React.FC = (): JSX.Element | null => {
   const navigate = useNavigate();
-  const newStory = useSelector(selectSelectedNews);
+  const newStory = useSelector(selectNews);
 
   useEffect(() => {
     if (!newStory) navigate("/");

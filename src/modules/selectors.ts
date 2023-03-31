@@ -1,5 +1,5 @@
 import { RootState } from ".";
 import { NewStory } from "../types";
 
-export const selectSelectedNews = (state: RootState): NewStory | undefined =>
+export const selectNews = (state: RootState): NewStory | undefined =>
   state.selectedNews.data;
