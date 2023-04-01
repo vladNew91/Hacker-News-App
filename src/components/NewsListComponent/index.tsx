@@ -1,6 +1,7 @@
 import { ListSubheaderComponent } from '../../components';
 import { ErrorBoundary } from "react-error-boundary";
 import { getTimeFromNow } from '../../helpers';
+import { ErrorPage } from '../../pages';
 import { NewStory } from '../../types';
 import {
     Box,
@@ -27,7 +28,7 @@ export const NewsListComponent: React.FC<NewsListComponentProps> = ({
             aria-labelledby="nested-list-subheader"
             subheader={<ListSubheaderComponent handleReloadNews={handleReloadNews} />}
         >
-            <ErrorBoundary fallback={<div>Something went wrong</div>}>
+            <ErrorBoundary fallback={<ErrorPage />}>
                 {data.map((el: NewStory, i: number) => (
                     <Box key={el.data.id}>
                         <ListItem disablePadding>

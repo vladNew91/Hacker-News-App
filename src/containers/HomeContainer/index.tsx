@@ -13,7 +13,7 @@ import {
 } from '../../components';
 
 export const HomeContainer: React.FC = (): JSX.Element => {
-    const { isLoading, error, data, refetch } = useQuery("requestNews", getNewsRequest, {
+    const { isLoading, error, data, refetch } = useQuery("news", getNewsRequest, {
         refetchOnMount: false,
         refetchOnWindowFocus: false,
     });

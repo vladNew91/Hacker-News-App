@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Experimental_CssVarsProvider as ThemeProvider } from '@mui/material/styles';
+import { ReactQueryDevtools } from 'react-query/devtools'
 import { QueryClientProvider } from 'react-query';
 import { LayoutComponent } from './components';
 import { HomePage, NewsPage } from './pages';
@@ -13,7 +14,6 @@ export const App: React.FC = (): JSX.Element => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-
         <Router>
           <LayoutComponent>
             <Routes>
@@ -23,6 +23,7 @@ export const App: React.FC = (): JSX.Element => {
           </LayoutComponent>
         </Router>
       </ThemeProvider>
+      <ReactQueryDevtools />
     </QueryClientProvider>
   );
 };

@@ -1,6 +1,5 @@
 import { CircularProgress, IconButton, Tooltip } from "@mui/material";
 import CachedIcon from '@mui/icons-material/Cached';
-import { getNewsRequest } from "../../api";
 import { useQuery } from "react-query";
 
 interface ReloadNewsComponentProps {
@@ -10,7 +9,7 @@ interface ReloadNewsComponentProps {
 export const ReloadNewsComponent: React.FC<ReloadNewsComponentProps> = ({
     handleReloadNews,
 }: ReloadNewsComponentProps): JSX.Element => {
-    const { isFetching } = useQuery("requestNews", getNewsRequest, {
+    const { isFetching } = useQuery("news", {
         refetchOnMount: false,
         refetchOnWindowFocus: false,
     });
