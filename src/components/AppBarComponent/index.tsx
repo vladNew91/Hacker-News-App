@@ -1,0 +1,44 @@
+import { ThemeSwitcherContainer } from '../../containers';
+import AltRouteIcon from '@mui/icons-material/AltRoute';
+import {
+    IconButton,
+    Box,
+    AppBar,
+    Toolbar,
+    Typography,
+    ButtonGroup,
+    Button,
+} from '@mui/material';
+
+interface AppBarComponentProps {
+    goToPage: (url: string) => void;
+}
+
+export const AppBarComponent: React.FC<AppBarComponentProps> = ({
+    goToPage,
+}: AppBarComponentProps): JSX.Element => {
+    return (
+        <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="fixed">
+                <Toolbar>
+                    <IconButton onClick={() => goToPage("/")}>
+                        <AltRouteIcon />
+                    </IconButton>
+
+                    <Typography variant="h6" component="div">
+                        Hacker News
+                    </Typography>
+
+                    <Box mr={3} ml={3}>
+                        <ThemeSwitcherContainer />
+                    </Box>
+
+                    <ButtonGroup variant="text" color="inherit" >
+                        <Button onClick={() => goToPage("/news")}>News</Button>
+                        <Button onClick={() => goToPage("/jobs")}>Jobs</Button>
+                    </ButtonGroup>
+                </Toolbar>
+            </AppBar>
+        </Box>
+    );
+};

@@ -1,5 +1,5 @@
 import { experimental_extendTheme } from '@mui/material/styles';
-import { indigo, orange } from "@mui/material/colors";
+import { blue, indigo, orange } from "@mui/material/colors";
 
 export const theme = experimental_extendTheme({
     colorSchemes: {
@@ -10,6 +10,7 @@ export const theme = experimental_extendTheme({
         },
         dark: {
             palette: {
+                // primary: indigo,
                 secondary: orange,
             },
         },

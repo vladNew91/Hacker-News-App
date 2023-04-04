@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { selectedNewsSlice } from "./slices";
+import { selectedItemSlice } from "./slices";
 
 export * from "./query";
 
 export const store = configureStore({
   reducer: {
-    selectedNews: selectedNewsSlice.reducer,
+    selectedItem: selectedItemSlice.reducer,
   },
   middleware: getDefaultMiddleware =>
   getDefaultMiddleware({

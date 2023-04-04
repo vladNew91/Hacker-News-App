@@ -9,7 +9,7 @@ interface ReloadNewsComponentProps {
 export const ReloadNewsComponent: React.FC<ReloadNewsComponentProps> = ({
     handleReloadNews,
 }: ReloadNewsComponentProps): JSX.Element => {
-    const { isFetching } = useQuery("news", {
+    const { isFetching } = useQuery(["news", "newstories"], {
         refetchOnMount: false,
         refetchOnWindowFocus: false,
     });

@@ -1,7 +1,6 @@
-export interface NewStory {
+type Response = {
     data: {
         by: string;
-        descendants: number;
         id: number;
         score: number;
         time: number;
@@ -9,4 +8,16 @@ export interface NewStory {
         type: string;
         url: string;
     }
+}
+
+export type News = Response & {
+    data: {
+        descendants: number
+    };
+}
+
+export type Job = Response & {
+    data: {
+        text: string;
+    };
 }

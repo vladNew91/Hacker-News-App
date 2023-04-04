@@ -1,21 +1,29 @@
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 const firstElement = 0;
 const onehungredElement = 100;
 
-const URL = "https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty";
-const URL_ITEM = "https://hacker-news.firebaseio.com/v0/item/";
+const getUrl = (topic: string) => `https://hacker-news.firebaseio.com/v0/${topic}.json?print=pretty`;
 
-export async function getNewsRequest() {
-    const { data }: AxiosResponse<number[]> = await axios.get(URL);
-
-    const top100NewsArray: number[] = data.slice(firstElement, onehungredElement);
-
-    const newsData = await axios.all(
-        top100NewsArray.map(
-            (el: number) => axios.get(`${URL_ITEM}${el}.json?print=pretty`)
-        )
-    ).catch((err: AxiosError) => console.log(err));
-
-    return newsData;
+type FetDataRequestProps = {
+    queryKey: string[];
 }
+
+export const getDataRequest = async ({
+    queryKey
+}: FetDataRequestProps) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [_, prodId] = queryKey;
+
+    const { data }: AxiosResponse<number[]> = await axios.get(getUrl(prodId));
+
+    const last100Data: number[] = data.slice(firstElement, onehungredElement);
+
+    const responseData = await axios.all(
+        last100Data.map(
+            (el: number) => axios.get(getUrl(`item/${el}`))
+        )
+    );
+
+    return responseData;
+};
