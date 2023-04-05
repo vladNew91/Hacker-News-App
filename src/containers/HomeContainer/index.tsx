@@ -1,1 +1,1 @@
-export const HomeContainer: React.FC = (): JSX.Element => <h1>Home page</h1>
+export const HomeContainer: React.FC = (): JSX.Element => <h2>Home page</h2>

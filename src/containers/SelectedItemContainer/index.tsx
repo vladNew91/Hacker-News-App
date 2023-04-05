@@ -2,36 +2,38 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getTimeFromNow } from "../../helpers";
-import { selectNews } from "../../modules/selectors";
+import { selectedItem } from "../../modules/selectors";
 import { Link, styled, Typography } from "@mui/material";
 
 const Box = styled('div')(({ theme }) => ({
   margin: theme.spacing(2),
 }));
 
-export const NewsStoryContainer: React.FC = (): JSX.Element | null => {
+export const SelectedItemContainer: React.FC = (): JSX.Element | null => {
   const navigate = useNavigate();
-  const newStory = useSelector(selectNews);
+  const item = useSelector(selectedItem);
 
   useEffect(() => {
-    if (!newStory) navigate("/");
-  }, [newStory, navigate]);
+    if (!item) navigate("/");
+  }, [item, navigate]);
 
-  if (!newStory) return null;
+  if (!item) return null;
 
   return (
     <Box>
       <Link
-        href={newStory.data.url}
+        href={item.data.url}
         underline="hover"
         target={"_blank"}
         variant="h6"
       >
-        {newStory.data.title}
+        {item.data.title}
       </Link>
 
       <Typography variant="subtitle2">
-        {newStory.data.score} point from {newStory.data.by} {getTimeFromNow(newStory.data.time)}
+        <>{item.data.score} </>
+        <>point from {item.data.by} </>
+        <>{getTimeFromNow(item.data.time)}</>
       </Typography>
     </Box>
   );

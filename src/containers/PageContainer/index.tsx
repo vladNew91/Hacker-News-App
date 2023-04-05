@@ -33,7 +33,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const handleReloadPage = useCallback(() => {
+    const handleReloadList = useCallback(() => {
         goOnTop(ref);
         refetch();
     }, [refetch]);
@@ -53,8 +53,9 @@ export const PageContainer: React.FC<PageContainerProps> = ({
             <PageListComponent
                 data={data}
                 queryParametr1={queryParametr1}
+                queryParametr2={queryParametr2}
                 handleSelectItem={handleSelectItem}
-                handleReloadPage={handleReloadPage}
+                handleReloadList={handleReloadList}
             />
 
             {error && <ErrorAlertComponent />}

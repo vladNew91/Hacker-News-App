@@ -1,4 +1,4 @@
-import { ListSubheaderComponent } from '..';
+import { ListSubheaderComponent } from '../../components';
 import { ErrorBoundary } from "react-error-boundary";
 import { getTimeFromNow } from '../../helpers';
 import { ErrorPage } from '../../pages';
@@ -15,14 +15,16 @@ import {
 interface PageListComponentProps {
     data: News[] | Job[],
     queryParametr1: string;
-    handleReloadPage: () => void;
+    queryParametr2: string;
+    handleReloadList: () => void;
     handleSelectItem: (el: News | Job) => void;
 }
 
 export const PageListComponent: React.FC<PageListComponentProps> = ({
     data,
     queryParametr1,
-    handleReloadPage,
+    queryParametr2,
+    handleReloadList,
     handleSelectItem,
 }: PageListComponentProps): JSX.Element => {
     return (
@@ -32,7 +34,8 @@ export const PageListComponent: React.FC<PageListComponentProps> = ({
                 <ListSubheaderComponent
                     length={data.length}
                     queryParametr1={queryParametr1}
-                    handleReloadNews={handleReloadPage}
+                    queryParametr2={queryParametr2}
+                    handleReloadList={handleReloadList}
                 />
             }
         >

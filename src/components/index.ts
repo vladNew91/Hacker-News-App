@@ -3,6 +3,6 @@ export * from "./LoadingComponent";
 export * from "./ErrorAlertComponent";
 export * from "./PageListComponent";
 export * from "./ThemeSwitcherComponent";
-export * from "./ReloadNewsComponent";
+export * from "./ReloadListComponent";
 export * from "./ListSubheaderComponent";
 export * from "./AppBarComponent";

@@ -1,5 +1,5 @@
 import { experimental_extendTheme } from '@mui/material/styles';
-import { blue, indigo, orange } from "@mui/material/colors";
+import { indigo, orange } from "@mui/material/colors";
 
 export const theme = experimental_extendTheme({
     colorSchemes: {
