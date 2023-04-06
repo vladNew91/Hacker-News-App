@@ -59,7 +59,7 @@ export const AppBarComponent: React.FC<AppBarComponentProps> = ({
 
                     <Box display={{ xs: 'none', sm: 'block' }}>
                         <ButtonGroup variant="text" color="inherit">
-                            <Button onClick={() => goToPage("/")}>Top</Button>
+                            <Button onClick={() => goToPage("/top")}>Top</Button>
                             <Button onClick={() => goToPage("/best")}>Best</Button>
                             <Button onClick={() => goToPage("/newest")}>Newest</Button>
                             <Button onClick={() => goToPage("/jobs")}>Jobs</Button>

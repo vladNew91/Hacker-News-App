@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { QueryFunctionContext } from 'react-query';
+import { Configuration, OpenAIApi } from "openai";
 
 const firstElement = 0;
 const lastElement = 100;
@@ -34,4 +35,23 @@ export const loadItemCommentsRequest = async ({
     return axios.all(
         queryParametr2.map((el: number) => axios.get(getUrl(`item/${el}`)))
     );
+};
+
+export const requestGpt = async (text?: string) => {
+    const configuration = new Configuration({
+        apiKey: process.env.CHATGPT_API_KEY,
+    });
+
+    const openai = new OpenAIApi(configuration);
+    const { data } = await openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: text,
+        temperature: 0,
+        max_tokens: 150,
+        top_p: 1.0,
+        frequency_penalty: 0.5,
+        presence_penalty: 0.0,
+    });
+
+    return data;
 };

@@ -1,11 +1,16 @@
 import { ChatGPTContainer } from "../../containers";
+import { Container, Section } from "./styled";
 
 export const HomePage: React.FC = (): JSX.Element => {
     return (
-        <>
-            <div>Weather</div>
-            <div>Charts</div>
-            <ChatGPTContainer />
-        </>
+        <Container>
+            <Section>Weather</Section>
+
+            <Section>
+                <ChatGPTContainer />
+            </Section>
+
+            <Section>Charts</Section>
+        </Container >
     );
 };
