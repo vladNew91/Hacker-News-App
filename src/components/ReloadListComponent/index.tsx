@@ -11,7 +11,11 @@ export const ReloadListComponent: React.FC<ReloadListComponentProps> = ({
     handleReloadList,
 }: ReloadListComponentProps): JSX.Element => {
     const iconReload: JSX.Element = (
-        isFetching ? <CircularProgress sx={{ m: 0.38 }} size={14} /> : <CachedIcon fontSize={'small'} />
+        isFetching
+        ?
+        <CircularProgress sx={{ m: 0.38 }} size={14} />
+        :
+        <CachedIcon fontSize="small" />
     );
 
     return (

@@ -47,7 +47,9 @@ export const PageListComponent: React.FC<PageListComponentProps> = ({
                             >
                                 <ListItemText
                                     primary={`${++i}. ${el.data?.title}`}
-                                    secondary={`${el.data?.score} point from ${el.data?.by} ${getTimeFromNow(el.data?.time)}`}
+                                    secondary={
+                                        `${el.data?.score} point from ${el.data?.by} ${getTimeFromNow(el.data?.time)}`
+                                    }
                                 />
                             </ListItemButton>
                         </ListItem>
