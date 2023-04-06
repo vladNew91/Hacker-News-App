@@ -23,10 +23,12 @@ export const PageContainer: React.FC<PageContainerProps> = ({
     queryParametr1,
     queryParametr2,
 }: PageContainerProps): JSX.Element => {
-    const { isLoading, error, data, refetch } = useQuery([queryParametr1, queryParametr2], getDataRequest, {
-        refetchOnMount: false,
-        refetchOnWindowFocus: false,
-    });
+    const { isLoading, error, data, refetch } = useQuery(
+        [queryParametr1, queryParametr2], getDataRequest, {
+            refetchOnMount: false,
+            refetchOnWindowFocus: false,
+        }
+    );
 
     const ref = useRef<null | HTMLDivElement>(null);
 

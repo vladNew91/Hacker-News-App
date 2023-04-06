@@ -1,12 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Experimental_CssVarsProvider as ThemeProvider } from '@mui/material/styles';
-import { HomePage, JobsPage, NewsPage, NewsItemPage, JobItemPage } from './pages';
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { QueryClientProvider } from 'react-query';
 import { LayoutComponent } from './components';
 import { CssBaseline } from '@mui/material';
 import { queryClient } from './modules';
 import { theme } from './styles';
+import {
+  HomePage,
+  JobsPage,
+  NewsPage,
+  NewsItemPage,
+  JobItemPage,
+  TopStoriesItemPage,
+} from './pages';
 import './index.css';
 
 export const App: React.FC = (): JSX.Element => {
@@ -21,6 +28,7 @@ export const App: React.FC = (): JSX.Element => {
               <Route path="/news" element={<NewsPage />} />
               <Route path="/jobs" element={<JobsPage />} />
               <Route path="/news/:newsId" element={<NewsItemPage />} />
+              <Route path="/topstories/:storyId" element={<TopStoriesItemPage />} />
               <Route path="/jobs/:jobId" element={<JobItemPage />} />
             </Routes>
           </LayoutComponent>
