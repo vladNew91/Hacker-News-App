@@ -1,18 +1,18 @@
-# Interface for Hacker News 
-https://news.ycombinator.com/news
+# Hacker News App
+based on https://news.ycombinator.com/
 
 # [Demo](https://vladnew91-int-for-hacker-news.netlify.app)
 
 ## Conditions:
-Main page:
-1. Shows the latest 100 news in a list sorted by date, most recent on top.
-2. Each news contains:
-  - Name
+All pages:
+1. Shows the stories in a list.
+2. Each story contains:
+  - Title
   - author's nickname
   - publication date
-3. By clicking on the news, you go to the news page.
-4. The list of news should be automatically updated once a minute without user intervention.
-5. The page should have a button to force refresh of the news list.
+  - score
+3. By clicking on the story, you go to the story page.
+4. Have a button to force refresh of the list.
 
 ## List of technologies
 
@@ -21,6 +21,9 @@ Main page:
 3. [Axios](https://axios-http.com/docs/intro)
 4. [MUI](https://mui.com/)
 5. [React Router V6](https://reactrouter.com/en/main)
+6. [Moment](https://momentjs.com/)
+7. [React Query](https://tanstack.com/query/v3/docs/react/overview)
+7. [Redux Toolkit](https://redux-toolkit.js.org/)
 
 ## Available Scripts
 
