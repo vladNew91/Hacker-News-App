@@ -5,17 +5,17 @@ const lastElement = 100;
 
 const getUrl = (topic: string) => `https://hacker-news.firebaseio.com/v0/${topic}.json?print=pretty`;
 
-type FetDataRequestProps = {
+type DataRequestProps = {
     queryKey: string[];
 }
 
 export const getDataRequest = async ({
     queryKey
-}: FetDataRequestProps) => {
+}: DataRequestProps) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [_, prodId] = queryKey;
+    const [queryParametr1, queryParametr2] = queryKey;
 
-    const { data }: AxiosResponse<number[]> = await axios.get(getUrl(prodId));
+    const { data }: AxiosResponse<number[]> = await axios.get(getUrl(queryParametr2));
 
     const last100Data: number[] = data.slice(firstElement, lastElement);
 

@@ -21,7 +21,7 @@ export const ReloadListComponent: React.FC<ReloadListComponentProps> = ({
     return (
         <Tooltip title="Reload">
             <IconButton
-                color="primary"
+                color="secondary"
                 onClick={handleReloadList}
             >
                 {iconReload}

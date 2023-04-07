@@ -18,6 +18,7 @@ export const SelectedItemComponent: React.FC<SelectedItemComponentProps> = ({
     return (
         <Box>
             <Link
+                color="secondary"
                 href={item.data.url}
                 underline="hover"
                 target={"_blank"}

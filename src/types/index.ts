@@ -12,12 +12,12 @@ type Response = {
 
 export type News = Response & {
     data: {
-        descendants: number
+        descendants?: number
     };
 }
 
 export type Job = Response & {
     data: {
-        text: string;
+        text?: string;
     };
 }

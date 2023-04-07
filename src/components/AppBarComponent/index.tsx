@@ -1,5 +1,5 @@
 import { ThemeSwitcherContainer } from '../../containers';
-import AltRouteIcon from '@mui/icons-material/AltRoute';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
 import {
     IconButton,
     Box,
@@ -19,10 +19,10 @@ export const AppBarComponent: React.FC<AppBarComponentProps> = ({
 }: AppBarComponentProps): JSX.Element => {
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="fixed">
-                <Toolbar>
+            <AppBar position="fixed" enableColorOnDark>
+                <Toolbar variant="dense">
                     <IconButton onClick={() => goToPage("/")}>
-                        <AltRouteIcon />
+                        <NewspaperIcon />
                     </IconButton>
 
                     <Typography variant="h6" component="div">
@@ -33,7 +33,7 @@ export const AppBarComponent: React.FC<AppBarComponentProps> = ({
                         <ThemeSwitcherContainer />
                     </Box>
 
-                    <ButtonGroup variant="text" color="inherit" >
+                    <ButtonGroup variant="text" color="inherit">
                         <Button onClick={() => goToPage("/news")}>News</Button>
                         <Button onClick={() => goToPage("/jobs")}>Jobs</Button>
                     </ButtonGroup>
