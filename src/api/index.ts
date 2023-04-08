@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import { ResponseData } from '../types';
 
 const firstElement = 0;
 const lastElement = 100;
@@ -23,5 +24,5 @@ export const getDataRequest = async ({
         last100Data.map((el: number) => axios.get(getUrl(`item/${el}`)))
     );
 
-    return responseData;
+    return responseData as ResponseData[];
 };

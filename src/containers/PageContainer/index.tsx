@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import { useQuery } from 'react-query';
 import { selectedItem } from '../../modules/slices';
 import { getDataRequest } from '../../api';
+import { ResponseData } from '../../types';
 import { goOnTop } from '../../helpers';
-import { Job, News } from '../../types';
 import {
     ErrorAlertComponent,
     LoadingComponent,
@@ -40,7 +40,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
         refetch();
     }, [refetch]);
 
-    const handleSelectItem = useCallback((item: News | Job) => {
+    const handleSelectItem = useCallback((item: ResponseData) => {
         dispatch(selectedItem(item));
         navigate(`/${queryParametr1}/${item.data.id}`);
     }, [dispatch, navigate, queryParametr1]);

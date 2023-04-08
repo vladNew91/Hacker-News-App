@@ -14,8 +14,8 @@ export const LayoutComponent: React.FC<LayoutComponentProps> = ({
 
             <Box
                 sx={{
-                    height: 'calc(100vh - 64px)',
-                    overflowY: 'auto',
+                    height: "calc(100vh - 48px)",
+                    overflowY: "auto",
                     mt: "48px",
                 }}
             >

@@ -1,13 +1,15 @@
+import ReactHtmlParser from 'react-html-parser';
+import { ResponseData } from "../../types";
 import { getTimeFromNow } from "../../helpers";
 import { Link, styled, Typography } from "@mui/material";
-import { Job, News } from "../../types";
 
 const Box = styled('div')(({ theme }) => ({
     margin: theme.spacing(2),
+    color: theme.palette.mode === "dark" ? "#ffe0b2" : "inherit",
 }));
 
 interface SelectedItemComponentProps {
-    item?: News | Job;
+    item?: ResponseData;
 }
 
 export const SelectedItemComponent: React.FC<SelectedItemComponentProps> = ({
@@ -18,6 +20,7 @@ export const SelectedItemComponent: React.FC<SelectedItemComponentProps> = ({
     return (
         <Box>
             <Link
+                style={{ cursor: "pointer"}}
                 color="secondary"
                 href={item.data.url}
                 underline="hover"
@@ -32,6 +35,13 @@ export const SelectedItemComponent: React.FC<SelectedItemComponentProps> = ({
                 <>point from {item.data.by} </>
                 <>{getTimeFromNow(item.data.time)}</>
             </Typography>
+
+            {item.data.text
+                &&
+                (<Typography variant="subtitle1" m={2}>
+                    {ReactHtmlParser(item.data.text)}
+                </Typography>
+                )}
         </Box>
     );
 };

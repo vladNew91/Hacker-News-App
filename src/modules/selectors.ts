@@ -1,5 +1,5 @@
 import { RootState } from ".";
-import { News, Job } from "../types";
+import { ResponseData } from "../types";
 
-export const selectedItem = (state: RootState): News | Job | undefined =>
+export const selectedItem = (state: RootState): ResponseData | undefined =>
   state.selectedItem.data;

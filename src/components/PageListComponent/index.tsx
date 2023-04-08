@@ -1,8 +1,8 @@
 import { ListSubheaderContainer } from '../../containers';
 import { ErrorBoundary } from "react-error-boundary";
 import { getTimeFromNow } from '../../helpers';
+import { ResponseData } from '../../types';
 import { ErrorPage } from '../../pages';
-import { Job, News } from '../../types';
 import {
     Box,
     Divider,
@@ -13,11 +13,11 @@ import {
 } from '@mui/material';
 
 interface PageListComponentProps {
-    data: News[] | Job[],
+    data: ResponseData[],
     queryParametr1: string;
     queryParametr2: string;
     handleReloadList: () => void;
-    handleSelectItem: (el: News | Job) => void;
+    handleSelectItem: (el: ResponseData) => void;
 }
 
 export const PageListComponent: React.FC<PageListComponentProps> = ({
@@ -40,7 +40,7 @@ export const PageListComponent: React.FC<PageListComponentProps> = ({
             }
         >
             <ErrorBoundary fallback={<ErrorPage />}>
-                {data.map((el: News | Job, i: number) => (
+                {data.map((el: ResponseData, i: number) => (
                     <Box key={i}>
                         <ListItem disablePadding dense>
                             <ListItemButton onClick={() => handleSelectItem(el)}

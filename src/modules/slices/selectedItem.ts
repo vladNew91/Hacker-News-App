@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { News, Job } from "../../types";
+import { ResponseData } from "../../types";
 
 export interface SelectedItemState {
-  data?: News | Job;
+  data?: ResponseData;
 }
 
 const initialState: SelectedItemState = {

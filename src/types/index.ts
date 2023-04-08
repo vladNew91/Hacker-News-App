@@ -1,23 +1,19 @@
-type Response = {
+export type ResponseData = {
     data: {
-        by: string;
         id: number;
-        score: number;
+        deleted?: boolean;
+        type?: "job" | "story" | "comment" | "poll" | "pollopt";
+        by?: string;
         time: number;
-        title: string;
-        type: string;
-        url: string;
-    }
-}
-
-export type News = Response & {
-    data: {
-        descendants?: number
-    };
-}
-
-export type Job = Response & {
-    data: {
         text?: string;
-    };
+        dead?: boolean;
+        parent?: number;
+        poll?: number;
+        kids?: number[];
+        url?: string;
+        score?: number;
+        title?: string;
+        parts?: number[];
+        descendants?: number
+    }
 }

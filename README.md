@@ -1,11 +1,12 @@
 # Hacker News App
-based on https://news.ycombinator.com/
+based on [ycombinator.com](https://news.ycombinator.com/)\
+API [HackerNews/API](https://github.com/HackerNews/API)
 
 # [Demo](https://vladnew91-int-for-hacker-news.netlify.app)
 
 ## Conditions:
 All pages:
-1. Shows the stories in a list.
+1. Show the stories in a list.
 2. Each story contains:
   - Title
   - author's nickname
@@ -28,7 +29,7 @@ All pages:
 ## Available Scripts
 
 Clone this repo.\
-In the project directory, you have to install dependences:
+In the project directory, you can install dependences:
 
 ```
 yarn

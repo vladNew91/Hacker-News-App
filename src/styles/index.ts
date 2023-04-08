@@ -22,10 +22,14 @@ export const theme = experimental_extendTheme({
                     main: "#251800",
                 },
                 secondary: {
-                    main: orange[600],
+                    main: orange[300],
                 },
                 background: {
                     default: "#392400",
+                },
+                text: {
+                    primary: orange[300],
+                    secondary: orange[100],
                 },
             },
         }
