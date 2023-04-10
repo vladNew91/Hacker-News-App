@@ -9,10 +9,8 @@ import { theme } from './styles';
 import {
   HomePage,
   JobsPage,
-  NewsPage,
-  NewsItemPage,
-  JobItemPage,
-  TopStoriesItemPage,
+  NewestPage,
+  ItemPage,
 } from './pages';
 import './index.css';
 
@@ -25,11 +23,10 @@ export const App: React.FC = (): JSX.Element => {
           <LayoutComponent>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/news" element={<NewsPage />} />
+              <Route path="/top" element={<HomePage />} />
+              <Route path="/newest" element={<NewestPage />} />
               <Route path="/jobs" element={<JobsPage />} />
-              <Route path="/news/:newsId" element={<NewsItemPage />} />
-              <Route path="/topstories/:storyId" element={<TopStoriesItemPage />} />
-              <Route path="/jobs/:jobId" element={<JobItemPage />} />
+              <Route path="/:page/:itemId" element={<ItemPage />} />
             </Routes>
           </LayoutComponent>
         </Router>

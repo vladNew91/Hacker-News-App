@@ -1,18 +1,14 @@
 import axios, { AxiosResponse } from 'axios';
-import { ResponseData } from '../types';
+import { QueryFunctionContext } from 'react-query';
 
 const firstElement = 0;
 const lastElement = 100;
 
 const getUrl = (topic: string) => `https://hacker-news.firebaseio.com/v0/${topic}.json?print=pretty`;
 
-type DataRequestProps = {
-    queryKey: string[];
-}
-
 export const getDataRequest = async ({
     queryKey
-}: DataRequestProps) => {
+}: QueryFunctionContext<string[]>) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [queryParametr1, queryParametr2] = queryKey;
 
@@ -24,5 +20,18 @@ export const getDataRequest = async ({
         last100Data.map((el: number) => axios.get(getUrl(`item/${el}`)))
     );
 
-    return responseData as ResponseData[];
+    return responseData;
+};
+
+export const loadItemCommentsRequest = async ({
+    queryKey,
+}: QueryFunctionContext<[string, number[]]>) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [queryParametr1, queryParametr2] = queryKey;
+
+    if (!queryParametr2) return;
+
+    return axios.all(
+        queryParametr2.map((el: number) => axios.get(getUrl(`item/${el}`)))
+    );
 };

@@ -6,4 +6,5 @@ export * from "./ThemeSwitcherComponent";
 export * from "./ReloadListComponent";
 export * from "./ListSubheaderComponent";
 export * from "./AppBarComponent";
-export * from "./SelectedItemComponent";
+export * from "./ItemInfoComponent";
+export * from "./CommentComponent";

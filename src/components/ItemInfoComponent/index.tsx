@@ -1,6 +1,6 @@
-import ReactHtmlParser from 'react-html-parser';
 import { ResponseData } from "../../types";
 import { getTimeFromNow } from "../../helpers";
+import ReactHtmlParser from 'react-html-parser';
 import { Link, styled, Typography } from "@mui/material";
 
 const Box = styled('div')(({ theme }) => ({
@@ -8,19 +8,17 @@ const Box = styled('div')(({ theme }) => ({
     color: theme.palette.mode === "dark" ? "#ffe0b2" : "inherit",
 }));
 
-interface SelectedItemComponentProps {
-    item?: ResponseData;
+interface ItemInfoComponentProps {
+    item: ResponseData;
 }
 
-export const SelectedItemComponent: React.FC<SelectedItemComponentProps> = ({
+export const ItemInfoComponent: React.FC<ItemInfoComponentProps> = ({
     item,
-}: SelectedItemComponentProps): JSX.Element | null => {
-    if (!item) return null;
-
+}: ItemInfoComponentProps): JSX.Element => {
     return (
         <Box>
             <Link
-                style={{ cursor: "pointer"}}
+                style={{ cursor: "pointer" }}
                 color="secondary"
                 href={item.data.url}
                 underline="hover"
@@ -36,12 +34,11 @@ export const SelectedItemComponent: React.FC<SelectedItemComponentProps> = ({
                 <>{getTimeFromNow(item.data.time)}</>
             </Typography>
 
-            {item.data.text
-                &&
-                (<Typography variant="subtitle1" m={2}>
+            {item.data.text && (
+                <Typography variant="subtitle1" mt={2}>
                     {ReactHtmlParser(item.data.text)}
                 </Typography>
-                )}
+            )}
         </Box>
     );
 };

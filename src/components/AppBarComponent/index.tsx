@@ -34,7 +34,8 @@ export const AppBarComponent: React.FC<AppBarComponentProps> = ({
                     </Box>
 
                     <ButtonGroup variant="text" color="inherit">
-                        <Button onClick={() => goToPage("/news")}>News</Button>
+                        <Button onClick={() => goToPage("/")}>Top</Button>
+                        <Button onClick={() => goToPage("/newest")}>Newest</Button>
                         <Button onClick={() => goToPage("/jobs")}>Jobs</Button>
                     </ButtonGroup>
                 </Toolbar>

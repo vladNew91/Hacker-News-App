@@ -12,10 +12,12 @@ export const ReloadListContainer: React.FC<ReloadListContainerProps> = ({
     queryParametr2,
     handleReloadList,
 }: ReloadListContainerProps): JSX.Element => {
-    const { isFetching } = useQuery([queryParametr1, queryParametr2], {
-        refetchOnMount: false,
-        refetchOnWindowFocus: false,
-    });
+    const { isFetching } = useQuery(
+        [queryParametr1, queryParametr2],
+        {
+            refetchOnMount: false,
+            refetchOnWindowFocus: false,
+        });
 
     return (
         <ReloadListComponent

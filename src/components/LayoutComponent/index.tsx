@@ -1,5 +1,11 @@
+import { styled } from '@mui/material';
 import { AppBarContainer } from '../../containers';
-import { Box } from '@mui/material';
+
+const Box = styled("div")(({ theme }) => ({
+    height: "calc(100vh - 48px)",
+    overflowY: "auto",
+    marginTop: theme.spacing(6),
+}));
 
 export interface LayoutComponentProps {
     children: React.ReactNode;
@@ -11,16 +17,7 @@ export const LayoutComponent: React.FC<LayoutComponentProps> = ({
     return (
         <>
             <AppBarContainer />
-
-            <Box
-                sx={{
-                    height: "calc(100vh - 48px)",
-                    overflowY: "auto",
-                    mt: "48px",
-                }}
-            >
-                {children}
-            </Box>
+            <Box>{children}</Box>
         </>
     );
 };
