@@ -5,8 +5,8 @@ import { Card, Typography, styled } from "@mui/material";
 import { NestedCommentsContainer } from "../../containers";
 
 const CommentCard = styled(Card)(({ theme }) => ({
-    margin: "8px 0",
-    padding: theme.spacing(2),
+    margin: "8px 0 4px",
+    padding: "8px 0 0 8px",
     background: theme.palette.mode === "dark" ? "#482d00" : "",
 }));
 
@@ -19,12 +19,20 @@ export const CommentComponent: React.FC<CommentComponentProps> = ({
 }: CommentComponentProps): JSX.Element => {
     return (
         <CommentCard>
-            <Typography sx={{ fontSize: 12 }} color="text.secondary" gutterBottom>
+            <Typography
+                gutterBottom
+                fontSize={12}
+                color="text.secondary"
+            >
                 <>{comment.data.by} </>
                 <>{getTimeFromNow(comment.data.time)}</>
             </Typography>
 
-            <Typography variant="body2">
+            <Typography
+                pr={1}
+                overflow="auto"
+                variant="body2"
+            >
                 {HtmlParser(comment.data.text ? comment.data.text : "")}
             </Typography>
 

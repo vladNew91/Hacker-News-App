@@ -25,6 +25,7 @@ All pages:
 6. [Moment](https://momentjs.com/)
 7. [React Query](https://tanstack.com/query/v3/docs/react/overview)
 7. [Redux Toolkit](https://redux-toolkit.js.org/)
+8. [React HTML Parser](https://www.npmjs.com/package/react-html-parser)
 
 ## Available Scripts
 
