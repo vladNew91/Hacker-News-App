@@ -16,7 +16,10 @@ interface CommentComponentProps {
 
 export const CommentComponent: React.FC<CommentComponentProps> = ({
     comment,
-}: CommentComponentProps): JSX.Element => {
+}: CommentComponentProps): JSX.Element | null => {
+    if (!comment.data.text) return null;
+    if (comment.data.text === "[dead]") return null;
+
     return (
         <CommentCard>
             <Typography
@@ -33,7 +36,7 @@ export const CommentComponent: React.FC<CommentComponentProps> = ({
                 overflow="auto"
                 variant="body2"
             >
-                {HtmlParser(comment.data.text ? comment.data.text : "")}
+                {HtmlParser(comment.data.text)}
             </Typography>
 
             {!comment.data.kids ? null : <NestedCommentsContainer comments={comment.data.kids} />}

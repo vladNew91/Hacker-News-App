@@ -48,6 +48,17 @@ export const MobileMenuComponent: React.FC<MobileMenuComponentProps> = ({
                 <p>Top</p>
             </MenuItem>
 
+            <MenuItem onClick={() => handleCloseMenuItem("/best")}>
+                <IconButton
+                    size="large"
+                    color="inherit"
+                >
+                    <AutoStoriesIcon />
+                </IconButton>
+
+                <p>Best</p>
+            </MenuItem>
+
             <MenuItem onClick={() => handleCloseMenuItem("/newest")}>
                 <IconButton
                     size="large"

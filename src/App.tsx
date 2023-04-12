@@ -11,6 +11,7 @@ import {
   JobsPage,
   NewestPage,
   ItemPage,
+  BestPage,
 } from './pages';
 import './index.css';
 
@@ -26,6 +27,7 @@ export const App: React.FC = (): JSX.Element => {
               <Route path="/top" element={<HomePage />} />
               <Route path="/newest" element={<NewestPage />} />
               <Route path="/jobs" element={<JobsPage />} />
+              <Route path="/best" element={<BestPage />} />
               <Route path="/:page/:itemId" element={<ItemPage />} />
             </Routes>
           </LayoutComponent>

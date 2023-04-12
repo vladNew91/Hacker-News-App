@@ -10,7 +10,10 @@ interface NestedCommentsContainerProps {
 export const NestedCommentsContainer: React.FC<NestedCommentsContainerProps> = ({
     comments,
 }: NestedCommentsContainerProps): JSX.Element => {
-    const { data, error } = useQuery(["nestedComments", comments], loadItemCommentsRequest, {
+    const { data, error } = useQuery([
+        "nestedComments",
+        comments,
+    ], loadItemCommentsRequest, {
         refetchOnMount: false,
         refetchOnWindowFocus: false,
     });
