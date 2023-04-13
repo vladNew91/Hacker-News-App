@@ -2,7 +2,7 @@
 based on [ycombinator.com](https://news.ycombinator.com/)\
 API [HackerNews/API](https://github.com/HackerNews/API)
 
-# [Demo](https://vladnew91-int-for-hacker-news.netlify.app)
+# [Demo](https://hacker-news-y.netlify.app)
 
 ## Conditions:
 All pages:
@@ -14,6 +14,11 @@ All pages:
   - score
 3. By clicking on the story, you go to the story page.
 4. Have a button to force refresh of the list.
+
+Home page have:
+1. charts
+2. weather
+3. chatGPT
 
 ## List of technologies
 

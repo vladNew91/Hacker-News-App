@@ -10,3 +10,4 @@ export * from "./ItemInfoContainer";
 export * from "./ItemCommentsContainer";
 export * from "./ItemContainer";
 export * from "./NestedCommentsContainer";
+export * from "./ChatGPTContainer";

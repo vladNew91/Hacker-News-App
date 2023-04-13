@@ -1,3 +1,11 @@
-import { TopStoriesContainer } from "../../containers";
+import { ChatGPTContainer } from "../../containers";
 
-export const HomePage: React.FC = (): JSX.Element => <TopStoriesContainer />;
+export const HomePage: React.FC = (): JSX.Element => {
+    return (
+        <>
+            <div>Weather</div>
+            <div>Charts</div>
+            <ChatGPTContainer />
+        </>
+    );
+};
