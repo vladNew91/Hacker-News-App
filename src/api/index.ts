@@ -55,3 +55,17 @@ export const requestGpt = async (text?: string) => {
 
     return data;
 };
+
+export const weatherRequest = async ({
+    queryKey,
+}: QueryFunctionContext<string[]>) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [queryParametr1, queryParametr2] = queryKey;
+
+    const PATH = "http://api.weatherapi.com/v1/current.json?key=";
+    const API_KEY = "bea343cf63cc4d958a9130923212710";
+
+    const { data } = await axios.get(`${PATH}${API_KEY}&q=${queryParametr2 || "London"}&aqi=no`);
+
+    return data;
+};

@@ -1,11 +1,7 @@
 import { Paper, styled } from '@mui/material';
 
-export const Container = styled("div")(({ theme }) => ({
-    alignItems: "center",
-    padding: theme.spacing(3),
+export const Container = styled("div")(({
     height: "100%",
-    flex: "33.33%",
-    minWidth: "300px",
 }));
 
 export const TextInput = styled(Paper)(({ theme }) => ({
