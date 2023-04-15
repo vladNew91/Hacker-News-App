@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { QueryFunctionContext } from 'react-query';
 import { Configuration, OpenAIApi } from "openai";
+import { Weather } from '../types';
 
 const firstElement = 0;
 const lastElement = 100;
@@ -67,5 +68,5 @@ export const weatherRequest = async ({
 
     const { data } = await axios.get(`${PATH}${API_KEY}&q=${queryParametr2 || "London"}&aqi=no`);
 
-    return data;
+    return data as Weather;
 };

@@ -1,31 +1,23 @@
 import { useQuery } from "react-query";
 import { weatherRequest } from "../../api";
 import { ErrorAlertComponent } from "../../components";
-import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
+import { WeatherComponent, WeatherSkeletonComponent } from "../../components";
 
 export const WeatherContainer: React.FC = (): JSX.Element => {
-    const { data, error } = useQuery(["weather"], weatherRequest);
+    const { data, error } = useQuery(
+        ["weather"],
+        weatherRequest,
+        {
+            refetchOnMount: false,
+            refetchOnWindowFocus: false,
+        }
+    );
 
-    console.log(data);
+    if (!data) return <WeatherSkeletonComponent />;
 
     return (
         <>
-            <Card>
-                <CardActionArea>
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            <img
-                                width={80}
-                                src={data.current.condition.icon}
-                                alt="icon"
-                                loading="lazy"
-                            />
-                            {`${data.current.temp_c}℃`}<br/>
-                            {`${data.location.name}, ${data.location.country}`}
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
+            <WeatherComponent data={data} />
 
             {error && <ErrorAlertComponent />}
         </>
