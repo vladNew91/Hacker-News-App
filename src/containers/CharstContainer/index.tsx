@@ -1,65 +1,62 @@
 import {
     AreaChart,
     Area,
-    CartesianGrid,
     Tooltip,
     ResponsiveContainer,
+    XAxis,
 } from "recharts";
 
 const data = [
     {
-        name: "Page A",
-        uv: 4000,
-        pv: 2400,
-        amt: 2400
+        year: "2013",
+        price: 4000,
     },
     {
-        name: "Page B",
-        uv: 3000,
-        pv: 1398,
-        amt: 2210
+        year: "2014",
+        price: 3000,
     },
     {
-        name: "Page C",
-        uv: 2000,
-        pv: 9800,
-        amt: 2290
+        year: "2015",
+        price: 2000,
     },
     {
-        name: "Page D",
-        uv: 2780,
-        pv: 3908,
-        amt: 2000
+        year: "2016",
+        price: 2780,
     },
     {
-        name: "Page E",
-        uv: 1890,
-        pv: 4800,
-        amt: 2181
+        year: "2017",
+        price: 1890,
     },
     {
-        name: "Page F",
-        uv: 2390,
-        pv: 3800,
-        amt: 2500
+        year: "2018",
+        price: 2390,
     },
     {
-        name: "Page G",
-        uv: 3490,
-        pv: 4300,
-        amt: 2100
+        year: "2019",
+        price: 3490,
     }
 ];
 
 export const CharstContainer: React.FC = (): JSX.Element => {
     return (
         <ResponsiveContainer height={300}>
-            <AreaChart
-                data={data}
-            >
-                <CartesianGrid strokeDasharray="3 3" />
+            <AreaChart data={data}>
+                <defs>
+                    <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#2451B7" stopOpacity={0.4} />
+                        <stop offset="75%" stopColor="#2451B7" stopOpacity={0.05} />
+                    </linearGradient>
+                </defs>
+
                 <Tooltip />
-                <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+
+                <Area dataKey="price" stroke="#2451B7" fill="url(#color)" type="monotone" />
+
+                <XAxis
+                    axisLine={false}
+                    tickLine={false}
+                    dataKey="year"
+                />
             </AreaChart>
         </ResponsiveContainer>
     );

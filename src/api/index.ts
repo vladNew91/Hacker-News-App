@@ -4,7 +4,7 @@ import { Configuration, OpenAIApi } from "openai";
 import { Weather } from '../types';
 
 const firstElement = 0;
-const lastElement = 100;
+const lastElement = 10;
 
 const getUrl = (topic: string) => `https://hacker-news.firebaseio.com/v0/${topic}.json?print=pretty`;
 

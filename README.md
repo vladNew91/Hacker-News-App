@@ -16,9 +16,10 @@ All pages:
 4. Have a button to force refresh of the list.
 
 Home page have:
-1. charts
-2. weather
-3. chatGPT
+1. top stories
+4. chatGPT
+3. weather
+2. charts
 
 ## List of technologies
 
@@ -31,6 +32,8 @@ Home page have:
 7. [React Query](https://tanstack.com/query/v3/docs/react/overview)
 7. [Redux Toolkit](https://redux-toolkit.js.org/)
 8. [React HTML Parser](https://www.npmjs.com/package/react-html-parser)
+8. [Recharts](https://recharts.org/en-US)
+8. [OpenAI](https://openai.com/)
 
 ## Available Scripts
 

@@ -2,6 +2,8 @@ import { Paper, styled } from '@mui/material';
 
 export const Container = styled("div")(({
     height: "100%",
+    minHeight: "500px",
+    overflow: "auto",
 }));
 
 export const TextInput = styled(Paper)(({ theme }) => ({

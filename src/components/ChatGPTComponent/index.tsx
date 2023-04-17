@@ -20,6 +20,7 @@ export const ChatGPTComponent: React.FC<ChatGPTComponentProps> = ({
                 <InputBase
                     inputRef={inputRef}
                     sx={{ ml: 1, flex: 1 }}
+                    placeholder="Ask ChatGPT"
                 />
 
                 <IconButton
