@@ -10,3 +10,6 @@ export * from "./ItemInfoComponent";
 export * from "./CommentComponent";
 export * from "./MobileMenuComponent";
 export * from "./SettingsMenuComponent";
+export * from "./ChatGPTComponent";
+export * from "./WeatherCompomemt";
+export * from "./WeatherSkeletonComponent";

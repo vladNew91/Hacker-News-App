@@ -1,3 +1,4 @@
+import HomeIcon from '@mui/icons-material/Home';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { ThemeSwitcherContainer } from '../../containers';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
@@ -59,7 +60,7 @@ export const AppBarComponent: React.FC<AppBarComponentProps> = ({
 
                     <Box display={{ xs: 'none', sm: 'block' }}>
                         <ButtonGroup variant="text" color="inherit">
-                            <Button onClick={() => goToPage("/")}>Top</Button>
+                            <Button onClick={() => goToPage("/")}><HomeIcon /></Button>
                             <Button onClick={() => goToPage("/best")}>Best</Button>
                             <Button onClick={() => goToPage("/newest")}>Newest</Button>
                             <Button onClick={() => goToPage("/jobs")}>Jobs</Button>

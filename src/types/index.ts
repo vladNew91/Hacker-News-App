@@ -14,6 +14,20 @@ export type ResponseData = {
         score?: number;
         title?: string;
         parts?: number[];
-        descendants?: number
+        descendants?: number;
     }
+}
+
+export type Weather = {
+    current: {
+        condition: {
+            icon: string;
+            text: string;
+        };
+        temp_c: number;
+    };
+    location: {
+        country: string;
+        name: string;
+    };
 }

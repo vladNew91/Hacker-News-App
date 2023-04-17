@@ -45,7 +45,7 @@ export const MobileMenuComponent: React.FC<MobileMenuComponentProps> = ({
                     <AutoStoriesIcon />
                 </IconButton>
 
-                <p>Top</p>
+                <p>Home</p>
             </MenuItem>
 
             <MenuItem onClick={() => handleCloseMenuItem("/best")}>
