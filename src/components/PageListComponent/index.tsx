@@ -32,7 +32,6 @@ export const PageListComponent: React.FC<PageListComponentProps> = ({
             aria-labelledby="nested-list-subheader"
             subheader={
                 <ListSubheaderContainer
-                    length={data.length}
                     queryParametr1={queryParametr1}
                     queryParametr2={queryParametr2}
                     handleReloadList={handleReloadList}

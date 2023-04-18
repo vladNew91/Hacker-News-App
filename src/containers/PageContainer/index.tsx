@@ -1,8 +1,8 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
+import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { useQuery } from 'react-query';
-import { selectedItem } from '../../modules/slices';
+import { setListitem } from '../../modules/slices';
 import { getDataRequest } from '../../api';
 import { ResponseData } from '../../types';
 import { goOnTop } from '../../helpers';
@@ -11,6 +11,7 @@ import {
     LoadingComponent,
     PageListComponent,
 } from '../../components';
+import { Pagination } from '@mui/material';
 
 interface PageContainerProps {
     queryParametr1: string;
@@ -23,8 +24,10 @@ export const PageContainer: React.FC<PageContainerProps> = ({
     queryParametr1,
     queryParametr2,
 }: PageContainerProps): JSX.Element => {
-    const { isLoading, error, data, refetch } = useQuery(
-        [queryParametr1, queryParametr2],
+    const [listPage, setListPage] = useState<number>(1);
+
+    const { isLoading, error, data, refetch, isRefetching } = useQuery(
+        [queryParametr1, queryParametr2, +(`${listPage}0`)],
         getDataRequest,
         {
             refetchOnMount: false,
@@ -43,9 +46,16 @@ export const PageContainer: React.FC<PageContainerProps> = ({
     }, [refetch]);
 
     const handleSelectItem = useCallback((item: ResponseData) => {
-        dispatch(selectedItem(item));
+        dispatch(setListitem(item));
         navigate(`/${queryParametr1}/${item.data.id}`);
     }, [dispatch, navigate, queryParametr1]);
+
+    const handleChangeListPage = useCallback((
+        e: React.ChangeEvent<unknown>,
+        value: number
+    ) => {
+        setListPage(value);
+    }, []);
 
     if (!data) return <LoadingComponent />;
 
@@ -60,6 +70,16 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                 queryParametr2={queryParametr2}
                 handleSelectItem={handleSelectItem}
                 handleReloadList={handleReloadList}
+            />
+
+            <Pagination
+                count={6}
+                size="small"
+                hidePrevButton
+                hideNextButton
+                page={listPage}
+                disabled={isRefetching}
+                onChange={handleChangeListPage}
             />
 
             {error && <ErrorAlertComponent />}

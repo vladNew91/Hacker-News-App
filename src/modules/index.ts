@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { selectedItemSlice } from "./slices";
+import { list } from "./slices";
 
 export * from "./query";
 
 export const store = configureStore({
   reducer: {
-    selectedItem: selectedItemSlice.reducer,
+    list: list.reducer,
   },
   middleware: getDefaultMiddleware =>
   getDefaultMiddleware({

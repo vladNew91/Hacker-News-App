@@ -1,16 +1,9 @@
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { ItemInfoComponent } from "../../components";
-import { selectedItem } from "../../modules/selectors";
+import { selectedListItem } from "../../modules/selectors";
 
 export const ItemInfoContainer: React.FC = (): JSX.Element | null => {
-  const item = useSelector(selectedItem);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!item) navigate("/");
-  }, [item, navigate]);
+  const item = useSelector(selectedListItem);
 
   if (!item) return null;
 

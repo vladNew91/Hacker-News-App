@@ -3,23 +3,22 @@ import { QueryFunctionContext } from 'react-query';
 import { Configuration, OpenAIApi } from "openai";
 import { Weather } from '../types';
 
-const firstElement = 0;
-const lastElement = 10;
+const elementsOnPage = 10;
 
 const getUrl = (topic: string) => `https://hacker-news.firebaseio.com/v0/${topic}.json?print=pretty`;
 
 export const getDataRequest = async ({
     queryKey
-}: QueryFunctionContext<string[]>) => {
+}: QueryFunctionContext<[string, string, number]>) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [queryParametr1, queryParametr2] = queryKey;
+    const [queryParametr1, queryParametr2, queryParametr3] = queryKey;
 
     const { data }: AxiosResponse<number[]> = await axios.get(getUrl(queryParametr2));
 
-    const last100Data: number[] = data.slice(firstElement, lastElement);
+    const sliceData: number[] = data.slice(queryParametr3 - elementsOnPage, queryParametr3);
 
     const responseData = await axios.all(
-        last100Data.map((el: number) => axios.get(getUrl(`item/${el}`)))
+        sliceData.map((el: number) => axios.get(getUrl(`item/${el}`)))
     );
 
     return responseData;
@@ -63,7 +62,7 @@ export const weatherRequest = async ({
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [queryParametr1, queryParametr2] = queryKey;
 
-    const PATH = "http://api.weatherapi.com/v1/current.json?key=";
+    const PATH = "https://api.weatherapi.com/v1/current.json?key=";
     const API_KEY = "bea343cf63cc4d958a9130923212710";
 
     const { data } = await axios.get(`${PATH}${API_KEY}&q=${queryParametr2 || "London"}&aqi=no`);
