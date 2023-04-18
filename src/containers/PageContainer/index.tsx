@@ -1,8 +1,9 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { useQuery } from 'react-query';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import { setListitem } from '../../modules/slices';
+import { useColorScheme } from '@mui/material';
 import { getDataRequest } from '../../api';
 import { ResponseData } from '../../types';
 import { goOnTop } from '../../helpers';
@@ -11,7 +12,6 @@ import {
     LoadingComponent,
     PageListComponent,
 } from '../../components';
-import { Pagination } from '@mui/material';
 
 interface PageContainerProps {
     queryParametr1: string;
@@ -24,6 +24,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
     queryParametr1,
     queryParametr2,
 }: PageContainerProps): JSX.Element => {
+    const { mode } = useColorScheme();
     const [listPage, setListPage] = useState<number>(1);
 
     const { isLoading, error, data, refetch, isRefetching } = useQuery(
@@ -66,20 +67,14 @@ export const PageContainer: React.FC<PageContainerProps> = ({
 
             <PageListComponent
                 data={data}
+                mode={mode}
+                listPage={listPage}
+                isRefetching={isRefetching}
                 queryParametr1={queryParametr1}
                 queryParametr2={queryParametr2}
                 handleSelectItem={handleSelectItem}
                 handleReloadList={handleReloadList}
-            />
-
-            <Pagination
-                count={6}
-                size="small"
-                hidePrevButton
-                hideNextButton
-                page={listPage}
-                disabled={isRefetching}
-                onChange={handleChangeListPage}
+                handleChangeListPage={handleChangeListPage}
             />
 
             {error && <ErrorAlertComponent />}

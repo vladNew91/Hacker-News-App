@@ -1,40 +1,53 @@
-import { ListSubheaderContainer } from '../../containers';
-import { ErrorBoundary } from "react-error-boundary";
-import { getTimeFromNow } from '../../helpers';
-import { ResponseData } from '../../types';
-import { ErrorPage } from '../../pages';
 import {
     Box,
-    Divider,
-    ListItemButton,
-    ListItemText,
-    ListItem,
     List,
+    Divider,
+    ListItem,
+    ListItemText,
+    ListItemButton,
 } from '@mui/material';
+import { Mode } from "fs";
+import { ErrorPage } from '../../pages';
+import { ResponseData } from '../../types';
+import { getTimeFromNow } from '../../helpers';
+import { ErrorBoundary } from "react-error-boundary";
+import { ListSubheaderComponent } from '../../components';
 
 interface PageListComponentProps {
     data: ResponseData[],
+    mode?: Mode,
+    listPage: number,
+    isRefetching: boolean;
     queryParametr1: string;
     queryParametr2: string;
     handleReloadList: () => void;
     handleSelectItem: (el: ResponseData) => void;
+    handleChangeListPage: (e: React.ChangeEvent<unknown>, value: number) => void;
 }
 
 export const PageListComponent: React.FC<PageListComponentProps> = ({
     data,
+    mode,
+    listPage,
+    isRefetching,
     queryParametr1,
     queryParametr2,
     handleReloadList,
     handleSelectItem,
+    handleChangeListPage
 }: PageListComponentProps): JSX.Element => {
     return (
         <List
             aria-labelledby="nested-list-subheader"
             subheader={
-                <ListSubheaderContainer
+                <ListSubheaderComponent
+                    mode={mode}
+                    listPage={listPage}
+                    isRefetching={isRefetching}
                     queryParametr1={queryParametr1}
                     queryParametr2={queryParametr2}
                     handleReloadList={handleReloadList}
+                    handleChangeListPage={handleChangeListPage}
                 />
             }
         >
@@ -45,14 +58,23 @@ export const PageListComponent: React.FC<PageListComponentProps> = ({
                             <ListItemButton onClick={() => handleSelectItem(el)}
                             >
                                 <ListItemText
-                                    primary={`${++i}. ${el.data.title}`}
+                                    primary={
+                                        <Box display="flex">
+                                            {listPage === 1
+                                                ?
+                                                `${++i}. `
+                                                :
+                                                `${(listPage - 1) * 10 + ++i}. `
+                                            }
+                                            {el.data.title}
+                                        </Box>
+                                    }
                                     secondary={
-                                        `${el.data?.score} point from ${el.data.by} ${getTimeFromNow(el.data.time)}`
+                                        `${el.data.score} point from ${el.data.by} ${getTimeFromNow(el.data.time)}`
                                     }
                                 />
                             </ListItemButton>
                         </ListItem>
-
                         <Divider />
                     </Box>
                 ))}
