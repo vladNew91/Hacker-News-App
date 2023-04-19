@@ -1,10 +1,11 @@
-import { Grid, Stack } from "@mui/material";
 import {
-    CharstContainer,
     ChatGPTContainer,
-    TopStoriesContainer,
     WeatherContainer,
+    TopStoriesContainer,
+    BitcoinChartContainer,
+    EthereumChartContainer,
 } from "../../containers";
+import { Grid, Stack } from "@mui/material";
 
 export const HomePage: React.FC = (): JSX.Element => {
     return (
@@ -20,8 +21,8 @@ export const HomePage: React.FC = (): JSX.Element => {
             <Grid item xs={12} md={4} p={2}>
                 <Stack spacing={2}>
                     <WeatherContainer />
-                    <CharstContainer />
-                    <CharstContainer />
+                    <BitcoinChartContainer />
+                    <EthereumChartContainer />
                 </Stack>
             </Grid>
         </Grid>

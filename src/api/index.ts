@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { QueryFunctionContext } from 'react-query';
 import { Configuration, OpenAIApi } from "openai";
-import { Weather } from '../types';
+import { CoinData, Weather } from '../types';
 
 const elementsOnPage = 10;
 
@@ -11,11 +11,11 @@ export const getDataRequest = async ({
     queryKey
 }: QueryFunctionContext<[string, string, number]>) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [queryParametr1, queryParametr2, queryParametr3] = queryKey;
+    const [_, qK2, qK3] = queryKey;
 
-    const { data }: AxiosResponse<number[]> = await axios.get(getUrl(queryParametr2));
+    const { data }: AxiosResponse<number[]> = await axios.get(getUrl(qK2));
 
-    const sliceData: number[] = data.slice(queryParametr3 - elementsOnPage, queryParametr3);
+    const sliceData: number[] = data.slice(qK3 - elementsOnPage, qK3);
 
     const responseData = await axios.all(
         sliceData.map((el: number) => axios.get(getUrl(`item/${el}`)))
@@ -28,12 +28,12 @@ export const loadItemCommentsRequest = async ({
     queryKey,
 }: QueryFunctionContext<[string, number[]]>) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [queryParametr1, queryParametr2] = queryKey;
+    const [_, qK2] = queryKey;
 
-    if (!queryParametr2) return;
+    if (!qK2) return;
 
     return axios.all(
-        queryParametr2.map((el: number) => axios.get(getUrl(`item/${el}`)))
+        qK2.map((el: number) => axios.get(getUrl(`item/${el}`)))
     );
 };
 
@@ -60,12 +60,25 @@ export const weatherRequest = async ({
     queryKey,
 }: QueryFunctionContext<string[]>) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [queryParametr1, queryParametr2] = queryKey;
+    const [_, qK2] = queryKey;
 
     const PATH = "https://api.weatherapi.com/v1/current.json?key=";
     const API_KEY = "bea343cf63cc4d958a9130923212710";
 
-    const { data } = await axios.get(`${PATH}${API_KEY}&q=${queryParametr2 || "London"}&aqi=no`);
+    const { data } = await axios.get(`${PATH}${API_KEY}&q=${qK2 || "London"}&aqi=no`);
 
     return data as Weather;
+};
+
+export const cryptoRequest = async ({
+    queryKey,
+}: QueryFunctionContext<string[]>) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [_, qK2] = queryKey;
+
+    const { data } = await axios.get(
+        `https://api.coincap.io/v2/assets/${qK2.toLocaleLowerCase()}/history?interval=m1`
+    );
+
+    return data as CoinData;
 };

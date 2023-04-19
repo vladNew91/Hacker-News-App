@@ -1,9 +1,7 @@
 import { Paper, styled } from '@mui/material';
 
 export const Container = styled("div")(({
-    height: "100%",
-    minHeight: "500px",
-    overflow: "auto",
+    height: "700px",
 }));
 
 export const TextInput = styled(Paper)(({ theme }) => ({
@@ -11,6 +9,8 @@ export const TextInput = styled(Paper)(({ theme }) => ({
     alignItems: "center",
     marginBottom: theme.spacing(3),
     paddingLeft: theme.spacing(2),
+    position: "sticky",
+    top: 0,
 }));
 
 export const Answer = styled(Paper)(({ theme }) => ({

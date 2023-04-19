@@ -1,4 +1,10 @@
-import { Card, CardContent, Grid, Stack, Typography } from "@mui/material";
+import {
+    Card,
+    CardContent,
+    Grid,
+    Stack,
+    Typography,
+} from "@mui/material";
 import { Weather } from "../../types";
 
 interface WeatherComponentProps {
@@ -8,6 +14,8 @@ interface WeatherComponentProps {
 export const WeatherComponent: React.FC<WeatherComponentProps> = ({
     data,
 }: WeatherComponentProps): JSX.Element => {
+    console.log(data);
+
     return (
         <Card>
             <CardContent>
@@ -21,10 +29,21 @@ export const WeatherComponent: React.FC<WeatherComponentProps> = ({
                         />
                     </Grid>
 
-                    <Grid item xs={7}>
+                    <Grid item xs={8}>
                         <Stack>
-                            <Typography variant="h6">{data.current.condition.text}</Typography>
-                            <>{`${data.location.name}, ${data.location.country}`}</>
+                            <Typography>
+                                <Typography variant="body1">
+                                    {`${data.location.name},`}
+                                </Typography>
+
+                                <Typography variant="body2">
+                                    {data.location.country}
+                                </Typography>
+
+                                <Typography color="text.secondary" variant="body2">
+                                    {data.current.condition.text}
+                                </Typography>
+                            </Typography>
                         </Stack>
                     </Grid>
 

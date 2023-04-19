@@ -28,7 +28,7 @@ export const ChatGPTComponent: React.FC<ChatGPTComponentProps> = ({
                     sx={{ p: '10px' }}
                     onClick={handleGetAnswer}
                 >
-                    <SearchIcon />
+                    <SearchIcon color="secondary" />
                 </IconButton>
             </TextInput>
 

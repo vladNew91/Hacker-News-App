@@ -29,5 +29,12 @@ export type Weather = {
     location: {
         country: string;
         name: string;
+        tz_id: string;
     };
+}
+
+export type CoinData = {
+    data: { 
+        priceUsd: number;
+    }[];
 }
