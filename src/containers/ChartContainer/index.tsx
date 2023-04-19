@@ -1,7 +1,6 @@
 import {
     Area,
     YAxis,
-    Tooltip,
     AreaChart,
     ResponsiveContainer,
 } from "recharts";
