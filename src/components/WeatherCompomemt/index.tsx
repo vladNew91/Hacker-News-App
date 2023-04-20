@@ -14,8 +14,6 @@ interface WeatherComponentProps {
 export const WeatherComponent: React.FC<WeatherComponentProps> = ({
     data,
 }: WeatherComponentProps): JSX.Element => {
-    console.log(data);
-
     return (
         <Card>
             <CardContent>
@@ -31,7 +29,7 @@ export const WeatherComponent: React.FC<WeatherComponentProps> = ({
 
                     <Grid item xs={8}>
                         <Stack>
-                            <Typography>
+                            <Typography component="span">
                                 <Typography variant="body1">
                                     {`${data.location.name},`}
                                 </Typography>

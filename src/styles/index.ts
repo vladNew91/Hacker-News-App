@@ -13,6 +13,7 @@ export const theme = experimental_extendTheme({
                 },
                 background: {
                     default: grey[50],
+                    paper: grey[100],
                 },
             },
         },
@@ -26,6 +27,7 @@ export const theme = experimental_extendTheme({
                 },
                 background: {
                     default: "#392400",
+                    paper: "#1c1200",
                 },
                 text: {
                     primary: orange[300],

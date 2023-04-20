@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import { ResponseData } from "../../types";
 import { loadItemCommentsRequest } from "../../api";
 import { CommentComponent, ErrorAlertComponent } from "../../components";
+import { AxiosError } from "axios";
 
 interface NestedCommentsContainerProps {
     comments: number[];
@@ -21,7 +22,7 @@ export const NestedCommentsContainer: React.FC<NestedCommentsContainerProps> = (
     if (!data) return <p>Loading...</p>;
 
     return (
-        <>
+        <div>
             {data.map((comment: ResponseData, i) => (
                 <CommentComponent
                     key={i}
@@ -29,7 +30,7 @@ export const NestedCommentsContainer: React.FC<NestedCommentsContainerProps> = (
                 />
             ))}
 
-            {error && <ErrorAlertComponent />}
-        </>
+            {error as AxiosError && <ErrorAlertComponent />}
+        </div>
     );
 };

@@ -1,13 +1,13 @@
-import HtmlParser from "react-html-parser";
 import { ResponseData } from "../../types";
 import { getTimeFromNow } from "../../helpers";
+import ReactHtmlParser from "react-html-parser";
 import { Card, Typography, styled } from "@mui/material";
 import { NestedCommentsContainer } from "../../containers";
 
 const CommentCard = styled(Card)(({ theme }) => ({
     margin: "8px 0 4px",
     padding: "8px 0 0 8px",
-    background: theme.palette.mode === "dark" ? "#482d00" : "",
+    background: "background.paper",
 }));
 
 interface CommentComponentProps {
@@ -26,6 +26,7 @@ export const CommentComponent: React.FC<CommentComponentProps> = ({
                 gutterBottom
                 fontSize={12}
                 color="text.secondary"
+                component="span"
             >
                 <>{comment.data.by} </>
                 <>{getTimeFromNow(comment.data.time)}</>
@@ -35,8 +36,9 @@ export const CommentComponent: React.FC<CommentComponentProps> = ({
                 pr={1}
                 overflow="auto"
                 variant="body2"
+                component="div"
             >
-                {HtmlParser(comment.data.text)}
+                {ReactHtmlParser(comment.data.text)}
             </Typography>
 
             {!comment.data.kids ? null : <NestedCommentsContainer comments={comment.data.kids} />}

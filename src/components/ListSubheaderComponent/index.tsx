@@ -3,21 +3,21 @@ import { ReloadListContainer } from "../../containers";
 import { Mode } from "fs";
 
 interface ListSubheaderComponentProps {
-    mode?: Mode,
+    qK1: string;
+    qK2: string;
+    mode?: Mode;
     listPage: number;
     isRefetching: boolean;
-    queryParametr1: string;
-    queryParametr2: string;
     handleReloadList: () => void;
     handleChangeListPage: (e: React.ChangeEvent<unknown>, value: number) => void;
 }
 
 export const ListSubheaderComponent: React.FC<ListSubheaderComponentProps> = ({
+    qK1,
+    qK2,
     mode,
     listPage,
     isRefetching,
-    queryParametr1,
-    queryParametr2,
     handleReloadList,
     handleChangeListPage,
 }: ListSubheaderComponentProps): JSX.Element => {
@@ -30,11 +30,11 @@ export const ListSubheaderComponent: React.FC<ListSubheaderComponentProps> = ({
                 alignItems: "center",
             }}
         >
-            <>Last {queryParametr1}</>
+            <>Last {qK1}</>
 
             <ReloadListContainer
-                queryParametr1={queryParametr1}
-                queryParametr2={queryParametr2}
+                qK1={qK1}
+                qK2={qK2}
                 handleReloadList={handleReloadList}
             />
 

@@ -25,7 +25,7 @@ export const ItemInfoComponent: React.FC<ItemInfoComponentProps> = ({
                 target={"_blank"}
                 variant="h6"
             >
-                {item.data.title}
+                <>{item.data.title}</>
             </Link>
 
             <Typography variant="subtitle2">
@@ -35,8 +35,8 @@ export const ItemInfoComponent: React.FC<ItemInfoComponentProps> = ({
             </Typography>
 
             {item.data.text && (
-                <Typography variant="subtitle1" mt={2}>
-                    {ReactHtmlParser(item.data.text)}
+                <Typography variant="subtitle1" mt={2} component="span">
+                    <>{ReactHtmlParser(item.data.text)}</>
                 </Typography>
             )}
         </Box>

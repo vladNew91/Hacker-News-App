@@ -19,7 +19,7 @@ export const ReloadListComponent: React.FC<ReloadListComponentProps> = ({
     );
 
     return (
-        <Tooltip title="Reload">
+        <Tooltip title="Refetch">
             <IconButton
                 color="secondary"
                 onClick={handleReloadList}

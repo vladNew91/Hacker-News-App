@@ -1,7 +1,7 @@
+import ReactHtmlParser from 'react-html-parser';
+import SearchIcon from '@mui/icons-material/Search';
 import { InputBase, IconButton } from '@mui/material';
 import { Answer, Container, TextInput } from './styled';
-import SearchIcon from '@mui/icons-material/Search';
-import HtmlParser from 'react-html-parser';
 
 interface ChatGPTComponentProps {
     answer?: string;
@@ -33,7 +33,7 @@ export const ChatGPTComponent: React.FC<ChatGPTComponentProps> = ({
             </TextInput>
 
             <Answer>
-                {answer && HtmlParser(answer)}
+                {answer && ReactHtmlParser(answer)}
             </Answer>
         </Container>
     );

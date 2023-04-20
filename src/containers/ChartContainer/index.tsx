@@ -37,7 +37,7 @@ export const ChartContainer: React.FC<ChartContainerProps> = ({
 
     return (
         <>
-            <Typography>
+            <Typography component="span">
                 {qK2} / USD
                 <Typography variant="body2" color="text.secondary">
                     24h Change

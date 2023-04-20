@@ -1,19 +1,21 @@
 import { useQuery } from "react-query";
 import { ReloadListComponent } from "../../components";
+import { getDataRequest } from "../../api";
 
 interface ReloadListContainerProps {
-    queryParametr1: string;
-    queryParametr2: string;
+    qK1: string;
+    qK2: string;
     handleReloadList: () => void;
 }
 
 export const ReloadListContainer: React.FC<ReloadListContainerProps> = ({
-    queryParametr1,
-    queryParametr2,
+    qK1,
+    qK2,
     handleReloadList,
 }: ReloadListContainerProps): JSX.Element => {
     const { isRefetching } = useQuery(
-        [queryParametr1, queryParametr2],
+        [qK1, qK2, undefined],
+        getDataRequest,
         {
             refetchOnMount: false,
             refetchOnWindowFocus: false,

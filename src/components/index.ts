@@ -13,3 +13,4 @@ export * from "./SettingsMenuComponent";
 export * from "./ChatGPTComponent";
 export * from "./WeatherCompomemt";
 export * from "./WeatherSkeletonComponent";
+export * from "./PageListSkeletonComponent";

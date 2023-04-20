@@ -1,34 +1,34 @@
-import React, { useCallback, useRef, useState } from 'react';
+import {
+    useRef,
+    useState,
+    useCallback,
+} from 'react';
 import { useQuery } from 'react-query';
+import { goOnTop } from '../../helpers';
 import { useDispatch } from "react-redux";
-import { useNavigate } from 'react-router-dom';
-import { setListitem } from '../../modules/slices';
-import { useColorScheme } from '@mui/material';
 import { getDataRequest } from '../../api';
 import { ResponseData } from '../../types';
-import { goOnTop } from '../../helpers';
-import {
-    ErrorAlertComponent,
-    LoadingComponent,
-    PageListComponent,
-} from '../../components';
+import { useNavigate } from 'react-router-dom';
+import { useColorScheme } from '@mui/material';
+import { setListitem } from '../../modules/slices';
+import { ErrorAlertComponent, PageListComponent } from '../../components';
 
 interface PageContainerProps {
-    queryParametr1: string;
-    queryParametr2: string;
+    qK1: string;
+    qK2: string;
     children?: React.ReactNode;
 }
 
 export const PageContainer: React.FC<PageContainerProps> = ({
+    qK1,
+    qK2,
     children,
-    queryParametr1,
-    queryParametr2,
 }: PageContainerProps): JSX.Element => {
     const { mode } = useColorScheme();
     const [listPage, setListPage] = useState<number>(1);
 
-    const { isLoading, error, data, refetch, isRefetching } = useQuery(
-        [queryParametr1, queryParametr2, +(`${listPage}0`)],
+    const { data, error, refetch, isRefetching } = useQuery(
+        [qK1, qK2, +(`${listPage}0`)],
         getDataRequest,
         {
             refetchOnMount: false,
@@ -48,8 +48,8 @@ export const PageContainer: React.FC<PageContainerProps> = ({
 
     const handleSelectItem = useCallback((item: ResponseData) => {
         dispatch(setListitem(item));
-        navigate(`/${queryParametr1}/${item.data.id}`);
-    }, [dispatch, navigate, queryParametr1]);
+        navigate(`/${qK1}/${item.data.id}`);
+    }, [dispatch, navigate, qK1]);
 
     const handleChangeListPage = useCallback((
         e: React.ChangeEvent<unknown>,
@@ -58,27 +58,24 @@ export const PageContainer: React.FC<PageContainerProps> = ({
         setListPage(value);
     }, []);
 
-    if (!data) return <LoadingComponent />;
-
     return (
         <>
             {children}
             <div ref={ref}></div>
 
             <PageListComponent
+                qK1={qK1}
+                qK2={qK2}
                 data={data}
                 mode={mode}
                 listPage={listPage}
                 isRefetching={isRefetching}
-                queryParametr1={queryParametr1}
-                queryParametr2={queryParametr2}
                 handleSelectItem={handleSelectItem}
                 handleReloadList={handleReloadList}
                 handleChangeListPage={handleChangeListPage}
             />
 
             {error && <ErrorAlertComponent />}
-            {isLoading && <LoadingComponent />}
         </>
     );
 };

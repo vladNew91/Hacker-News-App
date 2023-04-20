@@ -9,9 +9,9 @@ const getUrl = (topic: string) => `https://hacker-news.firebaseio.com/v0/${topic
 
 export const getDataRequest = async ({
     queryKey
-}: QueryFunctionContext<[string, string, number]>) => {
+}: QueryFunctionContext<[string, string, number | undefined]>) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [_, qK2, qK3] = queryKey;
+    const [_, qK2, qK3 = 1] = queryKey;
 
     const { data }: AxiosResponse<number[]> = await axios.get(getUrl(qK2));
 
@@ -39,7 +39,8 @@ export const loadItemCommentsRequest = async ({
 
 export const requestGpt = async (text?: string) => {
     const configuration = new Configuration({
-        apiKey: process.env.CHATGPT_API_KEY,
+        // apiKey: process.env.CHATGPT_API_KEY,
+        apiKey: "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",
     });
 
     const openai = new OpenAIApi(configuration);
@@ -60,12 +61,13 @@ export const weatherRequest = async ({
     queryKey,
 }: QueryFunctionContext<string[]>) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [_, qK2] = queryKey;
+    const [_, qK2 = "London"] = queryKey;
 
     const PATH = "https://api.weatherapi.com/v1/current.json?key=";
+    // const API_KEY = process.env.WEATHER_API_KEY;
     const API_KEY = "bea343cf63cc4d958a9130923212710";
 
-    const { data } = await axios.get(`${PATH}${API_KEY}&q=${qK2 || "London"}&aqi=no`);
+    const { data } = await axios.get(`${PATH}${API_KEY}&q=${qK2}&aqi=no`);
 
     return data as Weather;
 };
