@@ -5,6 +5,8 @@ import { QueryClientProvider } from 'react-query';
 import { LayoutComponent } from './components';
 import { CssBaseline } from '@mui/material';
 import { queryClient } from './modules';
+import { Provider } from 'react-redux';
+import { store } from './modules';
 import { theme } from './styles';
 import {
   HomePage,
@@ -19,18 +21,20 @@ export const App: React.FC = (): JSX.Element => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Router>
-          <LayoutComponent>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/newest" element={<NewestPage />} />
-              <Route path="/jobs" element={<JobsPage />} />
-              <Route path="/best" element={<BestPage />} />
-              <Route path="/:page/:itemId" element={<ItemPage />} />
-            </Routes>
-          </LayoutComponent>
-        </Router>
+        <Provider store={store}>
+          <CssBaseline />
+          <Router>
+            <LayoutComponent>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/jobs" element={<JobsPage />} />
+                <Route path="/best" element={<BestPage />} />
+                <Route path="/newest" element={<NewestPage />} />
+                <Route path="/:page/:itemId" element={<ItemPage />} />
+              </Routes>
+            </LayoutComponent>
+          </Router>
+        </Provider>
       </ThemeProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>
