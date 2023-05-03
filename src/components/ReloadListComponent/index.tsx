@@ -1,5 +1,5 @@
-import { CircularProgress, IconButton, Tooltip } from "@mui/material";
 import CachedIcon from '@mui/icons-material/Cached';
+import { CircularProgress, IconButton, Tooltip } from "@mui/material";
 
 interface ReloadListComponentProps {
     isFetching: boolean;

@@ -19,8 +19,8 @@ export const ItemContainer: React.FC = (): JSX.Element | null => {
         <>
             <ItemInfoComponent item={item} />
 
-            {item.data.kids && (
-                <ItemCommentsContainer comments={item.data.kids} />
+            {item.kids && (
+                <ItemCommentsContainer comments={item.kids} />
             )}
         </>
     );

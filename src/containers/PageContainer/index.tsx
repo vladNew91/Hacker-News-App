@@ -3,11 +3,11 @@ import {
     useState,
     useCallback,
 } from 'react';
+import { Story } from '../../types';
 import { useQuery } from 'react-query';
 import { goOnTop } from '../../helpers';
 import { useDispatch } from "react-redux";
-import { getDataRequest } from '../../api';
-import { ResponseData } from '../../types';
+import { getStoriesRequest } from '../../api';
 import { useNavigate } from 'react-router-dom';
 import { useColorScheme } from '@mui/material';
 import { setListitem } from '../../modules/slices';
@@ -29,7 +29,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
 
     const { data, error, refetch, isRefetching } = useQuery(
         [qK1, qK2, +(`${listPage}0`)],
-        getDataRequest,
+        getStoriesRequest,
         {
             refetchOnMount: false,
             refetchOnWindowFocus: false,
@@ -46,9 +46,9 @@ export const PageContainer: React.FC<PageContainerProps> = ({
         refetch();
     }, [refetch]);
 
-    const handleSelectItem = useCallback((item: ResponseData) => {
+    const handleSelectItem = useCallback((item: Story) => {
         dispatch(setListitem(item));
-        navigate(`/${qK1}/${item.data.id}`);
+        navigate(`/${qK1}/${item.id}`);
     }, [dispatch, navigate, qK1]);
 
     const handleChangeListPage = useCallback((

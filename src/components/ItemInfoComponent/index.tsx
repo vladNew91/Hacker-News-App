@@ -1,4 +1,4 @@
-import { ResponseData } from "../../types";
+import { Story } from "../../types";
 import { getTimeFromNow } from "../../helpers";
 import ReactHtmlParser from 'react-html-parser';
 import { Link, styled, Typography } from "@mui/material";
@@ -9,7 +9,7 @@ const Box = styled('div')(({ theme }) => ({
 }));
 
 interface ItemInfoComponentProps {
-    item: ResponseData;
+    item: Story;
 }
 
 export const ItemInfoComponent: React.FC<ItemInfoComponentProps> = ({
@@ -20,23 +20,23 @@ export const ItemInfoComponent: React.FC<ItemInfoComponentProps> = ({
             <Link
                 style={{ cursor: "pointer" }}
                 color="secondary"
-                href={item.data.url}
+                href={item.url}
                 underline="hover"
                 target={"_blank"}
                 variant="h6"
             >
-                <>{item.data.title}</>
+                <>{item.title}</>
             </Link>
 
             <Typography variant="subtitle2">
-                <>{item.data.score} </>
-                <>point from {item.data.by} </>
-                <>{getTimeFromNow(item.data.time)}</>
+                <>{item.score} </>
+                <>point from {item.by} </>
+                <>{getTimeFromNow(item.time)}</>
             </Typography>
 
-            {item.data.text && (
+            {item.text && (
                 <Typography variant="subtitle1" mt={2} component="span">
-                    <>{ReactHtmlParser(item.data.text)}</>
+                    <>{ReactHtmlParser(item.text)}</>
                 </Typography>
             )}
         </Box>

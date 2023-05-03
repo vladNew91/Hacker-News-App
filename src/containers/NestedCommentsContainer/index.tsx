@@ -1,8 +1,8 @@
+import { AxiosError } from "axios";
+import { Story } from "../../types";
 import { useQuery } from "react-query";
-import { ResponseData } from "../../types";
 import { loadItemCommentsRequest } from "../../api";
 import { CommentComponent, ErrorAlertComponent } from "../../components";
-import { AxiosError } from "axios";
 
 interface NestedCommentsContainerProps {
     comments: number[];
@@ -23,7 +23,7 @@ export const NestedCommentsContainer: React.FC<NestedCommentsContainerProps> = (
 
     return (
         <div>
-            {data.map((comment: ResponseData, i) => (
+            {data.map((comment: Story, i) => (
                 <CommentComponent
                     key={i}
                     comment={comment}

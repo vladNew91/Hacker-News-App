@@ -1,11 +1,11 @@
+import {
+    Menu,
+    MenuItem,
+    IconButton,
+} from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
-import {
-    IconButton,
-    Menu,
-    MenuItem,
-} from '@mui/material';
 
 interface MobileMenuComponentProps {
     isMobileMenuOpen: boolean;

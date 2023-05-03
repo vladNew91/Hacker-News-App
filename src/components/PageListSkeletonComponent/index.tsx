@@ -3,9 +3,9 @@ import {
     List,
     Divider,
     ListItem,
+    Skeleton,
     ListItemText,
     ListItemButton,
-    Skeleton,
 } from '@mui/material';
 
 export const PageListSkeletonComponent: React.FC = (): JSX.Element => {

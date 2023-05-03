@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { ReloadListComponent } from "../../components";
-import { getDataRequest } from "../../api";
+import { getStoriesRequest } from "../../api";
 
 interface ReloadListContainerProps {
     qK1: string;
@@ -15,7 +15,7 @@ export const ReloadListContainer: React.FC<ReloadListContainerProps> = ({
 }: ReloadListContainerProps): JSX.Element => {
     const { isRefetching } = useQuery(
         [qK1, qK2, undefined],
-        getDataRequest,
+        getStoriesRequest,
         {
             refetchOnMount: false,
             refetchOnWindowFocus: false,

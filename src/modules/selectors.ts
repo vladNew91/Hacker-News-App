@@ -1,7 +1,7 @@
 import { RootState } from ".";
-import { ResponseData } from "../types";
+import { Story } from "../types";
 
-export const selectedListItem = (state: RootState): ResponseData | undefined =>
+export const selectedListItem = (state: RootState): Story | undefined =>
   state.list.listitem;
 
 export const listPage = (state: RootState): number =>

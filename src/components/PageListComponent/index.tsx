@@ -7,8 +7,8 @@ import {
     ListItemButton,
 } from '@mui/material';
 import { Mode } from "fs";
+import { Story } from '../../types';
 import { ErrorPage } from '../../pages';
-import { ResponseData } from '../../types';
 import { getTimeFromNow } from '../../helpers';
 import { ErrorBoundary } from "react-error-boundary";
 import { ListSubheaderComponent, PageListSkeletonComponent } from '../../components';
@@ -18,10 +18,10 @@ interface PageListComponentProps {
     qK2: string;
     mode?: Mode;
     listPage: number;
-    data?: ResponseData[];
+    data?: Story[];
     isRefetching: boolean;
     handleReloadList: () => void;
-    handleSelectItem: (el: ResponseData) => void;
+    handleSelectItem: (el: Story) => void;
     handleChangeListPage: (e: React.ChangeEvent<unknown>, value: number) => void;
 }
 
@@ -55,7 +55,7 @@ export const PageListComponent: React.FC<PageListComponentProps> = ({
                     ?
                     <PageListSkeletonComponent />
                     :
-                    data.map((el: ResponseData, i: number) => (
+                    data.map((el: Story, i: number) => (
                         <Box key={i}>
                             <ListItem disablePadding dense>
                                 <ListItemButton onClick={() => handleSelectItem(el)}
@@ -69,12 +69,12 @@ export const PageListComponent: React.FC<PageListComponentProps> = ({
                                                     :
                                                     `${(listPage - 1) * 10 + ++i}. `
                                                 }
-                                                {el.data.title}
+                                                {el.title}
                                             </Box>
                                         }
                                         secondary={
-                                            `${el.data.score} point from ${el.data.by}
-                                            ${getTimeFromNow(el.data.time)}`
+                                            `${el.score} point from ${el.by}
+                                            ${getTimeFromNow(el.time)}`
                                         }
                                     />
                                 </ListItemButton>

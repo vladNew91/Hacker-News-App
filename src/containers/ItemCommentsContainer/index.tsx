@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
+import { Story } from "../../types";
 import { useQuery } from "react-query";
 import { styled } from "@mui/material";
-import { ResponseData } from "../../types";
 import { loadItemCommentsRequest } from "../../api";
 import { CommentComponent, ErrorAlertComponent, LoadingComponent } from "../../components";
 
@@ -30,7 +30,7 @@ export const ItemCommentsContainer: React.FC<ItemCommentsContainerProps> = ({
 
     return (
         <Container>
-            {data.map((comment: ResponseData, i: number) => (
+            {data.map((comment: Story, i: number) => (
                 <CommentComponent
                     key={i}
                     comment={comment}

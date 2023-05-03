@@ -1,17 +1,17 @@
+import {
+    Box,
+    Button,
+    AppBar,
+    Toolbar,
+    Typography,
+    IconButton,
+    ButtonGroup,
+} from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { ThemeSwitcherContainer } from '../../containers';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import { MobileMenuComponent, SettingsMenuComponent } from '../../components';
-import {
-    IconButton,
-    Box,
-    AppBar,
-    Toolbar,
-    Typography,
-    ButtonGroup,
-    Button,
-} from '@mui/material';
 
 interface AppBarComponentProps {
     goToPage: (url: string) => void;

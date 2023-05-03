@@ -1,9 +1,9 @@
 import {
     Card,
-    CardContent,
     Grid,
     Stack,
     Typography,
+    CardContent,
 } from "@mui/material";
 import { Weather } from "../../types";
 

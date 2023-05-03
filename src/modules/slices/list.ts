@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ResponseData } from "../../types";
+import { Story } from "../../types";
 
 export interface ListState {
-  listitem?: ResponseData;
+  listitem?: Story;
   listPage: number;
 }
 

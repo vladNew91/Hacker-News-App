@@ -1,27 +1,40 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { QueryFunctionContext } from 'react-query';
 import { Configuration, OpenAIApi } from "openai";
-import { CoinData, Weather } from '../types';
+import { CoinData, Story, Weather } from '../types';
 
 const elementsOnPage = 10;
 
-const getUrl = (topic: string) => `https://hacker-news.firebaseio.com/v0/${topic}.json?print=pretty`;
+const getUrl = (topic: string) => (
+    `https://hacker-news.firebaseio.com/v0/${topic}.json?print=pretty`
+);
 
-export const getDataRequest = async ({
+export const getStoryRequest = async (id: number) => {
+    const data = await fetch(getUrl(`item/${id}`));
+    const res: Story = await data.json();
+
+    return res;
+};
+
+export const getStoriesRequest = async ({
     queryKey
 }: QueryFunctionContext<[string, string, number | undefined]>) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_, qK2, qK3 = 1] = queryKey;
 
-    const { data }: AxiosResponse<number[]> = await axios.get(getUrl(qK2));
+    const data = await fetch(getUrl(qK2));
+    const result: number[] = await data.json();
 
-    const sliceData: number[] = data.slice(qK3 - elementsOnPage, qK3);
+    const sliceData: number[] = result.slice(qK3 - elementsOnPage, qK3);
 
-    const responseData = await axios.all(
-        sliceData.map((el: number) => axios.get(getUrl(`item/${el}`)))
+    const storiesData = await Promise.all(
+        sliceData.map(async (el: number) => {
+            const data: Story = await getStoryRequest(el);
+            return data;
+        })
     );
 
-    return responseData;
+    return storiesData;
 };
 
 export const loadItemCommentsRequest = async ({
@@ -32,8 +45,11 @@ export const loadItemCommentsRequest = async ({
 
     if (!qK2) return;
 
-    return axios.all(
-        qK2.map((el: number) => axios.get(getUrl(`item/${el}`)))
+    return Promise.all(
+        qK2.map(async (el: number) => {
+            const data: Story = await getStoryRequest(el);
+            return data;
+        })
     );
 };
 

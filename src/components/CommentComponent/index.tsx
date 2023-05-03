@@ -1,4 +1,4 @@
-import { ResponseData } from "../../types";
+import { Story } from "../../types";
 import { getTimeFromNow } from "../../helpers";
 import ReactHtmlParser from "react-html-parser";
 import { Card, Typography, styled } from "@mui/material";
@@ -11,14 +11,14 @@ const CommentCard = styled(Card)(({ theme }) => ({
 }));
 
 interface CommentComponentProps {
-    comment: ResponseData;
+    comment: Story;
 }
 
 export const CommentComponent: React.FC<CommentComponentProps> = ({
     comment,
 }: CommentComponentProps): JSX.Element | null => {
-    if (!comment.data.text) return null;
-    if (comment.data.text === "[dead]") return null;
+    if (!comment.text) return null;
+    if (comment.text === "[dead]") return null;
 
     return (
         <CommentCard>
@@ -28,8 +28,8 @@ export const CommentComponent: React.FC<CommentComponentProps> = ({
                 color="text.secondary"
                 component="span"
             >
-                <>{comment.data.by} </>
-                <>{getTimeFromNow(comment.data.time)}</>
+                <>{comment.by} </>
+                <>{getTimeFromNow(comment.time)}</>
             </Typography>
 
             <Typography
@@ -38,10 +38,10 @@ export const CommentComponent: React.FC<CommentComponentProps> = ({
                 variant="body2"
                 component="div"
             >
-                {ReactHtmlParser(comment.data.text)}
+                {ReactHtmlParser(comment.text)}
             </Typography>
 
-            {!comment.data.kids ? null : <NestedCommentsContainer comments={comment.data.kids} />}
+            {!comment.kids ? null : <NestedCommentsContainer comments={comment.kids} />}
         </CommentCard>
     );
 };
