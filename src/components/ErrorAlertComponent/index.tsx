@@ -11,9 +11,15 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-const alertTime = 5000;
+const alertTime = 10000;
 
-export const ErrorAlertComponent: React.FC = (): JSX.Element => {
+type ErrorAlertComponentProps = {
+  error?: string;
+}
+
+export const ErrorAlertComponent: React.FC<ErrorAlertComponentProps> = ({
+  error,
+}: ErrorAlertComponentProps): JSX.Element => {
   const [open, setOpen] = useState<boolean>(true);
 
   const closeAlert = useCallback(() => setOpen(false), [setOpen]);
@@ -40,7 +46,7 @@ export const ErrorAlertComponent: React.FC = (): JSX.Element => {
             </IconButton>
           }
         >
-          Connection error!
+          {error ? error : `Connection error!`}
         </Alert>
       </Collapse>
     </Box>

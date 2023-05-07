@@ -17,4 +17,5 @@ export const Answer = styled(Paper)(({ theme }) => ({
     display: "flex",
     padding: theme.spacing(2),
     height: "calc(100% - 45px - 24px)",
+    zIndex: 99,
 }));

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { QueryFunctionContext } from 'react-query';
-import { Configuration, OpenAIApi } from "openai";
 import { CoinData, Story, Weather } from '../types';
+import { Configuration, OpenAIApi } from "openai";
 
 const elementsOnPage = 10;
 
@@ -9,7 +9,7 @@ const getUrl = (topic: string) => (
     `https://hacker-news.firebaseio.com/v0/${topic}.json?print=pretty`
 );
 
-export const getStoryRequest = async (id: number) => {
+export const getStoryRequest = async (id: number): Promise<Story> => {
     const data = await fetch(getUrl(`item/${id}`));
     const res: Story = await data.json();
 
@@ -18,7 +18,7 @@ export const getStoryRequest = async (id: number) => {
 
 export const getStoriesRequest = async ({
     queryKey
-}: QueryFunctionContext<[string, string, number | undefined]>) => {
+}: QueryFunctionContext<[string, string, number | undefined]>): Promise<Story[]> => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_, qK2, qK3 = 1] = queryKey;
 
@@ -39,7 +39,7 @@ export const getStoriesRequest = async ({
 
 export const loadItemCommentsRequest = async ({
     queryKey,
-}: QueryFunctionContext<[string, number[]]>) => {
+}: QueryFunctionContext<[string, number[]]>): Promise<Story[] | undefined> => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_, qK2] = queryKey;
 
@@ -55,8 +55,7 @@ export const loadItemCommentsRequest = async ({
 
 export const requestGpt = async (text?: string) => {
     const configuration = new Configuration({
-        // apiKey: process.env.CHATGPT_API_KEY,
-        apiKey: "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",
+        apiKey: process.env.CHATGPT_API_KEY,
     });
 
     const openai = new OpenAIApi(configuration);
@@ -75,7 +74,7 @@ export const requestGpt = async (text?: string) => {
 
 export const weatherRequest = async ({
     queryKey,
-}: QueryFunctionContext<string[]>) => {
+}: QueryFunctionContext<string[]>): Promise<Weather> => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_, qK2 = "London"] = queryKey;
 
@@ -85,12 +84,12 @@ export const weatherRequest = async ({
 
     const { data } = await axios.get(`${PATH}${API_KEY}&q=${qK2}&aqi=no`);
 
-    return data as Weather;
+    return data;
 };
 
 export const cryptoRequest = async ({
     queryKey,
-}: QueryFunctionContext<string[]>) => {
+}: QueryFunctionContext<string[]>): Promise<CoinData> => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_, qK2] = queryKey;
 
@@ -98,5 +97,5 @@ export const cryptoRequest = async ({
         `https://api.coincap.io/v2/assets/${qK2.toLocaleLowerCase()}/history?interval=m1`
     );
 
-    return data as CoinData;
+    return data;
 };
