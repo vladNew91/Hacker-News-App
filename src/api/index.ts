@@ -87,15 +87,30 @@ export const weatherRequest = async ({
     return data;
 };
 
+// CRYPTO REQUEST
+const COINAPIKEY = "7b60ed666ce9499889bc14e0d93939b8863a143fb6565fb1632068fc9445aff7";
+const URL = "https://rest.coincap.io/v3/assets/";
+
 export const cryptoRequest = async ({
     queryKey,
 }: QueryFunctionContext<string[]>): Promise<CoinData> => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_, qK2] = queryKey;
 
-    const { data } = await axios.get(
-        `https://api.coincap.io/v2/assets/${qK2.toLocaleLowerCase()}/history?interval=m1`
-    );
+    const todayUNIXTime = Date.now();
+
+    const yesterdayUNIXTime = () => {
+        var d = new Date();
+        return d.setDate(d.getDate() - 1);
+    };
+
+    const { data } = await axios({
+        method: 'get',
+        url: `${URL}${qK2.toLocaleLowerCase()}/history?interval=h2&start=${yesterdayUNIXTime()}&end=${todayUNIXTime}`,
+        headers: {
+            'Authorization': `Bearer ${COINAPIKEY}`
+        }
+    });
 
     return data;
 };

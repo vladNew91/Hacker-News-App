@@ -2,26 +2,9 @@
 based on [ycombinator.com](https://news.ycombinator.com/)\
 API [HackerNews/API](https://github.com/HackerNews/API)
 
-# [Demo](https://hacker-news-y.netlify.app)
+## [Demo](https://hacker-news-y.netlify.app)
 
-## Conditions:
-All pages:
-1. Show the stories in a list.
-2. Each story contains:
-  - Title
-  - author's nickname
-  - publication date
-  - score
-3. By clicking on the story, you go to the story page.
-4. Have a button to force refresh of the list.
-
-Home page have:
-1. top stories
-4. chatGPT
-3. weather
-2. charts
-
-## List of technologies
+### List of technologies
 
 1. [React](https://reactjs.org/)
 2. [TypeScript](https://www.typescriptlang.org/docs/)
@@ -30,27 +13,13 @@ Home page have:
 5. [React Router V6](https://reactrouter.com/en/main)
 6. [Moment](https://momentjs.com/)
 7. [React Query](https://tanstack.com/query/v3/docs/react/overview)
-7. [Redux Toolkit](https://redux-toolkit.js.org/)
-8. [React HTML Parser](https://www.npmjs.com/package/react-html-parser)
-8. [Recharts](https://recharts.org/en-US)
-8. [OpenAI](https://openai.com/)
+8. [Redux Toolkit](https://redux-toolkit.js.org/)
+9. [React HTML Parser](https://www.npmjs.com/package/react-html-parser)
+10. [Recharts](https://recharts.org/en-US)
+11. [OpenAI](https://openai.com/)
 
-## Available Scripts
-
-Clone this repo.\
-In the project directory, you can install dependences:
-
-```
-yarn
-```
-
-
-### Getting Started
-
-
-Run the development server:
-
-```
-yarn start
-```
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### How to use:
+Clone the repository. In the project directory, you can run:\
+`yarn` - install dependences.\
+`yarn start` - runs the app in the development mode.\
+`yarn build` - builds the app for production to the `build` folder.

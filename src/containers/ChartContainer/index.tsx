@@ -25,7 +25,7 @@ export const ChartContainer: React.FC<ChartContainerProps> = ({
         }
     );
 
-    const price = `${data?.data.at(-1)?.priceUsd}`.split('.')[0];
+    const getCurrentPrice = `${data?.data.at(-1)?.priceUsd}`.split('.')[0];
 
     if (!data) return (
         <Skeleton
@@ -44,7 +44,7 @@ export const ChartContainer: React.FC<ChartContainerProps> = ({
                 </Typography>
 
                 <Typography variant="body2" color="text.secondary">
-                    Current: {price}
+                    Current: {getCurrentPrice}
                 </Typography>
             </Typography>
 
@@ -59,7 +59,7 @@ export const ChartContainer: React.FC<ChartContainerProps> = ({
 
                     {/* <Tooltip /> */}
 
-                    <Area dataKey="priceUsd" stroke="#2451B7" fill="url(#color)" />
+                    <Area type="monotone" dataKey="priceUsd" stroke="#2451B7" fill="url(#color)" />
                     <YAxis type="number" domain={["dataMin - 20", 'dataMax + 20']} hide />
                 </AreaChart>
             </ResponsiveContainer>
